@@ -1,0 +1,7 @@
+parameters:
+#    maps_page.example.class: Maps\PageBundle\Example
+
+services:
+#    maps_page.example:
+#        class: %maps_page.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

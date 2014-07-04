@@ -1,0 +1,4 @@
+maps_page:
+    resource: "@MapsPageBundle/Resources/config/routing.yml"
+    prefix:   /
+
