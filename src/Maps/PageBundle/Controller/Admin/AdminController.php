@@ -28,25 +28,11 @@ class AdminController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MapsPageBundle:Page')->findBy(array(), array('id' => 'DESC'));
-        $deleteForm = $this->createDeleteForm(1);
-
+        $entities = $em->getRepository('MapsPageBundle:Page')->findAll();
 
         return array(
-            'delete_form' => $deleteForm->createView(),
             'entities' => $entities,
         );
-    }
-
-
-    public function deleteFormAction($id)
-    {
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('@MapsPage/Admin/Admin/delet_form.html.twig', array(
-            'delete_form' => $deleteForm->createView()
-        ));
     }
 
     /**
@@ -246,14 +232,24 @@ class AdminController extends Controller
         return $this->redirect($this->generateUrl('page'));
     }
 
+    public function deleteFormAction($id, $title = 'Удалить', $class = "btn btn-danger btn-xs")
+    {
+        $deleteForm = $this->createDeleteForm($id, $title, $class);
+
+        return $this->render('@MapsPage/Admin/Admin/delet_form.html.twig', array(
+            'delete_form' => $deleteForm->createView()
+        ));
+    }
+
     /**
      * Creates a form to delete a Page entity by id.
      *
      * @param mixed $id The entity id
-     *
+     * @param string $title
+     * @param string $class
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm($id, $title = false, $class = false)
     {
         return $this->createFormBuilder(array(), array(
                 'attr' => array(
@@ -264,9 +260,9 @@ class AdminController extends Controller
             ->setAction($this->generateUrl('page_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array(
-                'label' => 'Удалить',
+                'label' => $title,
                 'attr' => array(
-                    'class' => 'btn btn-default btn-xs',
+                    'class' => $class,
                 ),
             ))
             ->getForm();
