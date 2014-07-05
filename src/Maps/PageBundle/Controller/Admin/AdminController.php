@@ -30,10 +30,23 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('MapsPageBundle:Page')->findBy(array(), array('id' => 'DESC'));
+        $deleteForm = $this->createDeleteForm(1);
+
 
         return array(
+            'delete_form' => $deleteForm->createView(),
             'entities' => $entities,
         );
+    }
+
+
+    public function deleteFormAction($id)
+    {
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('@MapsPage/Admin/Admin/delet_form.html.twig', array(
+            'delete_form' => $deleteForm->createView()
+        ));
     }
 
     /**
@@ -61,7 +74,7 @@ class AdminController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -94,11 +107,11 @@ class AdminController extends Controller
     public function newAction()
     {
         $entity = new Page();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -122,7 +135,7 @@ class AdminController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -148,8 +161,8 @@ class AdminController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -172,6 +185,7 @@ class AdminController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Page entity.
      *
@@ -200,8 +214,8 @@ class AdminController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -211,9 +225,6 @@ class AdminController extends Controller
      *
      * @Route("/{id}", name="page_delete")
      * @Method("DELETE")
-     * @param Request $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, $id)
     {
@@ -244,11 +255,20 @@ class AdminController extends Controller
      */
     private function createDeleteForm($id)
     {
-        return $this->createFormBuilder()
+        return $this->createFormBuilder(array(), array(
+                'attr' => array(
+                    'class' => 'inline-block',
+                )
+            )
+        )
             ->setAction($this->generateUrl('page_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-            ;
+            ->add('submit', 'submit', array(
+                'label' => 'Удалить',
+                'attr' => array(
+                    'class' => 'btn btn-default btn-xs',
+                ),
+            ))
+            ->getForm();
     }
 }

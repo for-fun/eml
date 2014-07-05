@@ -2,6 +2,7 @@ parameters:
 #    maps_page.example.class: Maps\PageBundle\Example
 
 services:
-#    maps_page.example:
-#        class: %maps_page.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    maps.twig.deleteform_extension:
+        class: Maps\PageBundle\Twig\DeleteFormExtension
+        tags:
+            - { name: twig.extension }

@@ -26,8 +26,9 @@
                 <td><a href="{{ path('page_show', { 'id': entity.id }) }}" target="_blank">{{ entity.url }}</a></td>
                 <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <a href="{{ path('page_show', { 'id': entity.id }) }}">show</a>
-                    <a href="{{ path('page_edit', { 'id': entity.id }) }}">edit</a>
+                    <a class="btn btn-default btn-xs" href="{{ path('page_edit', { 'id': entity.id }) }}">Изменить</a>
+                    {{ render(controller("MapsPageBundle:Admin/Admin:deleteForm", {'id': entity.id})) }}
+
                 </td>
             </tr>
         {% endfor %}

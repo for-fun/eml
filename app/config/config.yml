@@ -72,4 +72,5 @@ swiftmailer:
     spool:     { type: memory }
 
 mopa_bootstrap:
-    form: ~  # Adds twig form theme  support
+    form:
+      show_legend: false
