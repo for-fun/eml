@@ -35,12 +35,15 @@ class AdminController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Page entity.
      *
      * @Route("/", name="page_create")
      * @Method("POST")
-     * @Template("MapsPageBundle:Page:new.html.twig")
+     * @Template("MapsPageBundle:Admin/Admin:new.html.twig")
+     * @param Request $request
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function createAction(Request $request)
     {
