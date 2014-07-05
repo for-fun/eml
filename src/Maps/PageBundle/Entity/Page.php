@@ -36,9 +36,9 @@ class Page
     private $url;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="text", type="string", length=255)
+     * @ORM\Column(name="text", type="text")
      */
     private $text;
 

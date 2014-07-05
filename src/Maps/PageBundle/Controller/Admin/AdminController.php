@@ -29,7 +29,7 @@ class AdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MapsPageBundle:Page')->findAll();
+        $entities = $em->getRepository('MapsPageBundle:Page')->findBy(array(), array('id' => 'DESC'));
 
         return array(
             'entities' => $entities,
@@ -177,7 +177,7 @@ class AdminController extends Controller
      *
      * @Route("/{id}", name="page_update")
      * @Method("PUT")
-     * @Template("MapsPageBundle:Page:edit.html.twig")
+     * @Template("MapsPageBundle:Admin/Admin:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -205,11 +205,15 @@ class AdminController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Page entity.
      *
      * @Route("/{id}", name="page_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, $id)
     {
