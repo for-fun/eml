@@ -1,4 +1,4 @@
 wg_page_home:
-  resource: "@MapsPageBundle/Controller/PageController.php"
+  resource: "@MapsPageBundle/Controller/Admin/AdminController.php"
   type:     annotation
   prefix:   /
