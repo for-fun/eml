@@ -7,24 +7,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/vendor/bootswatch/flatly/bootstrap.min.css"/>
-    <style>
-        .body {
-            padding: 15px;
-        }
-        .content-header {
-            padding-bottom: 30px;
-        }
-        .content-header .title h3 {
-            margin-top: 7px;
-        }
-        .content-header .action {
-            text-align: right;
-            padding-top: 5px;
-        }
-        .inline-block {
-            display: inline-block;
-        }
-    </style>
+    <link rel="stylesheet" href="/admin/css/main.css"/>
 </head>
 <body class="body">
 {% block header %}
@@ -59,6 +42,7 @@
 {% block javascripts %}
     <script src="/vendor/jquery/dist/jquery.min.js"></script>
     <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/admin/js/main.js"></script>
 {% endblock %}
 </body>
 </html>
