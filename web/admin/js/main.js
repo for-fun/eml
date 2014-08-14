@@ -1,4 +1,4 @@
-var confrimDelete;
+var confrimDelete, injectEditor;
 
 confrimDelete = function() {
   return $(".deleteForm").submit(function(e) {
@@ -10,6 +10,14 @@ confrimDelete = function() {
   });
 };
 
+injectEditor = function() {
+  return $('.editor').summernote({
+    height: 300,
+    focus: true
+  });
+};
+
 $(function() {
-  return confrimDelete();
+  confrimDelete();
+  return injectEditor();
 });

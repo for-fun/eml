@@ -14,6 +14,11 @@
   ],
   "dependencies": {
     "jquery": "*",
-    "bootswatch": "*"
+    "bootswatch": "*",
+    "quill": "~0.17.2",
+    "bootstrap": "~3.2.0",
+    "bootstrap-wysihtml5": "*",
+    "summernote": "~0.5.3",
+    "font-awesome": "~4.1.0"
   }
 }

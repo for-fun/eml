@@ -17,7 +17,9 @@ class PageType extends AbstractType
         $builder
             ->add('name')
             ->add('url')
-            ->add('text')
+            ->add('text', 'textarea', [
+                'attr' => array('class' => 'editor')
+            ])
             ->add('date', null, [
                 'label' => false,
                 'required' => false,
