@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PageType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -18,10 +18,13 @@ class PageType extends AbstractType
             ->add('name')
             ->add('url')
             ->add('text')
-            ->add('date')
-        ;
+            ->add('date', null, [
+                'label' => false,
+                'required' => false,
+                'attr' => array('style' => 'display:none;')
+            ]);
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

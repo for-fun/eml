@@ -1,15 +1,15 @@
 {% extends '::admin.html.twig' %}
-
+{% set pageName = "Создать страницу" %}
+{% block title %}{{ pageName }}{% endblock title %}
 {% block body -%}
-    <h1>Page creation</h1>
+
+    <div class="row content-header">
+        <div class="col-xs-4 title">
+            <h3>{{ pageName }}</h3>
+        </div>
+        <div class="col-xs-8 action"></div>
+    </div>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('page') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

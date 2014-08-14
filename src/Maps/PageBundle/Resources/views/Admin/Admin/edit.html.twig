@@ -1,16 +1,21 @@
 {% extends '::admin.html.twig' %}
-
+{% set pageName = "Редактировать страницу" %}
+{% block title %}{{ pageName }}{% endblock title %}
 {% block body -%}
-    <h1>Page edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('page') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="row content-header">
+        <div class="col-xs-4 title">
+            <h3>{{ pageName }}</h3>
+        </div>
+        <div class="col-xs-8 action">
+            {% if entity.url != "/" %}
+                {{ render(controller("MapsPageBundle:Admin/Admin:deleteForm", {'id': entity.id, 'title': 'Удалить страницу', 'class':'btn btn-danger btn-sm'})) }}
+            {% endif %}
+        </div>
+    </div>
+    {{ form_start(edit_form) }}
+    {{ form_row(edit_form.name) }}
+    {% if entity.url == "/" %}
+        {{ form_row(edit_form.url, {'label' : false, 'attr' : {'class' : 'hide'} }) }}
+    {% endif %}
+    {{ form_end(edit_form) }}
 {% endblock %}

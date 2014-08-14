@@ -1,9 +1,10 @@
 {% extends '::admin.html.twig' %}
-
+{% set pageName = "Страницы" %}
+{% block title %}{{ pageName }}{% endblock title %}
 {% block body -%}
     <div class="row content-header">
         <div class="col-xs-4 title">
-            <h3>Страницы</h3>
+            <h3>{{ pageName }}</h3>
         </div>
         <div class="col-xs-8 action">
             <a class="btn btn-info btn-sm" href="{{ path('page_new') }}">Добавить страницу</a>
@@ -23,12 +24,13 @@
         {% for entity in entities %}
             <tr>
                 <td>{{ entity.name }}</td>
-                <td><a href="{{ path('page_show', { 'id': entity.id }) }}" target="_blank">{{ entity.url }}</a></td>
+                <td><a href="" target="_blank">{{ entity.url }}</a></td>
                 <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
+                <td style="width: 153px;">
                     <a class="btn btn-default btn-xs" href="{{ path('page_edit', { 'id': entity.id }) }}">Изменить</a>
-                    {{ render(controller("MapsPageBundle:Admin/Admin:deleteForm", {'id': entity.id})) }}
-
+                    {% if entity.url != "/" %}
+                        {{ render(controller("MapsPageBundle:Admin/Admin:deleteForm", {'id': entity.id})) }}
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}
