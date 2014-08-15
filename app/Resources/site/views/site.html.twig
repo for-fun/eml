@@ -2,11 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}{% endblock %} {% block titleRight %} - ЕДИНОМЫШЛЕННИКИ.RU{% endblock %}</title>
+    <title>{% if seoTitle is defined and seoTitle is not empty %}{{ seoTitle }}{% else %}{% if pageTitle is defined %}{{ pageTitle }}{% endif %}- ЕДИНОМЫШЛЕННИКИ.RU{% endif %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-    {% if page is defined %}
-        <meta name="description" content="{% block meta_description %}{{ page.seoDescription }}{% endblock %}">
-        <meta name="keywords" content="{% block meta_keywords %}{{ page.seoKeywords }}{% endblock %}">
+    {% if seoKeywords is defined and seoKeywords is not empty %}
+        <meta name="description" content="{{ seoKeywords }}">
+    {% endif %}
+    {% if seoDescription is defined and seoDescription is not empty %}
+        <meta name="keywords" content="{{ seoDescription }}">
     {% endif %}
     {% block stylesheets %}
         <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css"/>

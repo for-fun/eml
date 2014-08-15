@@ -25,6 +25,10 @@ class PageController extends Controller
     {
         return [
             'page' => $page,
+            'pageTitle' => $page->getName(),
+            'seoTitle' => $page->getSeoTitle(),
+            'seoKeywords' => $page->getSeoKeywords(),
+            'seoDescription' => $page->getSeoDescription(),
         ];
     }
 
