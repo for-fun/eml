@@ -10,10 +10,31 @@
     {% endblock %}
 </head>
 <body class="body">
-{% block header %}
-    header
-{% endblock %}
-{% block body %}{% endblock %}
+<div class="container">
+    {% block header %}
+        <br>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">ЕДИНОМЫШЛЕННИКИ.RU</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Список инициативных групп</a></li>
+                    <li><a href="/info">Описание</a></li>
+                    <li><a target="_blank" href="http://ednml.7bb.ru/">Форум</a></li>
+                </ul>
+            </div>
+        </nav>
+    {% endblock %}
+    {% block body %}{% endblock %}
+</div>
 {% block javascripts %}
     <script src="/vendor/jquery/dist/jquery.min.js"></script>
     <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
