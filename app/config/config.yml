@@ -30,6 +30,7 @@ twig:
     strict_variables: "%kernel.debug%"
     paths:
         "%kernel.root_dir%/Resources/admin/views": admin_theme
+        "%kernel.root_dir%/Resources/site/views": site_theme
 
 services:
     twig.extension.intl:

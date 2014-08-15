@@ -1,0 +1,4 @@
+confrimDelete = ->
+
+$ ->
+  do confrimDelete

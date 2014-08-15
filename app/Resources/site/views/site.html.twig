@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}{% endblock %} - ЕДИНОМЫШЛЕННИКИ.RU</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/site/css/main.css"/>
+    {% endblock %}
+</head>
+<body class="body">
+{% block header %}
+    header
+{% endblock %}
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/site/js/main.js"></script>
+{% endblock %}
+</body>
+</html>
