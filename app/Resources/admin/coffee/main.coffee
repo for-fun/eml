@@ -13,11 +13,11 @@ injectEditor = ->
       ['fontsize', ['fontsize']]
       ['color', ['color']]
       ['para', ['ul', 'ol', 'paragraph']]
-      ['height', ['height']]
       ['table', ['table']]
       ['insert', ['picture', 'link', 'video', 'hr']]
       ['Misc', ['codeview', 'undo', 'redo', 'help']]
     ]
+    styleTags: ['p', 'blockquote', 'h1', 'h2', 'h3'],
     lang: 'ru-RU'
     codemirror: {}
 

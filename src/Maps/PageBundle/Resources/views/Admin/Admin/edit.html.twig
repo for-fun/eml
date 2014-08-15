@@ -7,15 +7,15 @@
             <h3>{{ pageName }}</h3>
         </div>
         <div class="col-xs-8 action">
-            {% if entity.url != "/" %}
+            {% if entity.slug != "/" %}
                 {{ render(controller("MapsPageBundle:Admin/Admin:deleteForm", {'id': entity.id, 'title': 'Удалить страницу', 'class':'btn btn-danger btn-sm'})) }}
             {% endif %}
         </div>
     </div>
     {{ form_start(edit_form) }}
     {{ form_row(edit_form.name) }}
-    {% if entity.url == "/" %}
-        {{ form_row(edit_form.url, {'label' : false, 'attr' : {'class' : 'hide'} }) }}
+    {% if entity.slug == "/" %}
+        {{ form_row(edit_form.slug, {'label' : false, 'attr' : {'class' : 'hide'} }) }}
     {% endif %}
     {{ form_end(edit_form) }}
 {% endblock %}

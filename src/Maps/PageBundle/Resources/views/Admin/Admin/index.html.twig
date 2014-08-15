@@ -24,11 +24,21 @@
         {% for entity in entities %}
             <tr>
                 <td>{{ entity.name }}</td>
-                <td><a href="" target="_blank">{{ entity.url }}</a></td>
-                <td>{% if entity.date %} {{ entity.date|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }} {% endif %}</td>
+                <td>
+                    {% if entity.slug == "/" %}
+                        <a href="{{ path("maps_page_page_show") }}" target="_blank">{{ entity.slug }}</a>
+                    {% else %}
+                        <a href="{{ path("maps_page_page_show_1", {'slug': entity.slug}) }}" target="_blank">{{ entity.slug }}</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if entity.date %}
+                        {{ entity.date|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}
+                    {% endif %}
+                </td>
                 <td style="width: 153px;">
                     <a class="btn btn-default btn-xs" href="{{ path('page_edit', { 'id': entity.id }) }}">Изменить</a>
-                    {% if entity.url != "/" %}
+                    {% if entity.slug != "/" %}
                         {{ render(controller("MapsPageBundle:Admin/Admin:deleteForm", {'id': entity.id})) }}
                     {% endif %}
                 </td>

@@ -3,5 +3,5 @@
 {% block title %}{{ page.name }}{% endblock title %}
 
 {% block body -%}
-    {{ page.name }}
+    {{ page.text|raw }}
 {% endblock %}
