@@ -17,7 +17,7 @@ class PageController extends Controller
      * Show page entity.
      *
      * @Route("/", defaults={"slug" = "/"})
-     * @Route("/{slug}", requirements={"slug" = "[a-zA-Z|-]+"})
+     * @Route("/{slug}", requirements={"slug" = "[a-zA-Z-]+"})
      * @Method("GET")
      * @Template()
      */
@@ -31,5 +31,4 @@ class PageController extends Controller
             'seoDescription' => $page->getSeoDescription(),
         ];
     }
-
 }

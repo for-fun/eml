@@ -13,7 +13,7 @@ use Maps\PageBundle\Form\PageType;
 /**
  * Page controller.
  *
- * @Route("/page")
+ * @Route("/admin/page")
  */
 class AdminController extends Controller
 {

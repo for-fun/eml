@@ -1,0 +1,3 @@
+maps_groups_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MapsGroupsBundle:Default:index }

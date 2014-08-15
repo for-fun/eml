@@ -1,18 +1,19 @@
 <?php
 
-namespace Maps\PageBundle\Entity;
+namespace Maps\GroupsBundle\Entity\Groups;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\PrePersist;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Page
+ * Groups
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Maps\GroupsBundle\Entity\Groups\GroupsRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class Page
+class Groups
 {
     /**
      * @var integer
@@ -33,37 +34,37 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
-     */
-    private $slug;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="seoTitle", type="string", length=255, nullable=true)
-     */
-    private $seoTitle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="seoDescription", type="string", length=255, nullable=true)
-     */
-    private $seoDescription;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="seoKeywords", type="string", length=255, nullable=true)
-     */
-    private $seoKeywords;
-
-    /**
-     * @var text
-     *
-     * @ORM\Column(name="text", type="text")
+     * @ORM\Column(name="text", type="text", nullable=true)
      */
     private $text;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author_name", type="string", length=255)
+     */
+    private $author_name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author_contact", type="string", length=255)
+     */
+    private $author_contact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author_info", type="text", nullable=true)
+     */
+    private $author_info;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ip",  type="string", length=255, nullable=true)
+     */
+    private $ip;
 
     /**
      * @var \DateTime
@@ -71,7 +72,6 @@ class Page
      * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
-
 
     /**
      * Get id
@@ -84,21 +84,6 @@ class Page
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     * @return Page
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -107,21 +92,14 @@ class Page
     }
 
     /**
-     * Set text
-     *
-     * @param string $text
-     * @return Page
+     * @param string $name
      */
-    public function setText($text)
+    public function setName($name)
     {
-        $this->text = $text;
-
-        return $this;
+        $this->name = $name;
     }
 
     /**
-     * Get text
-     *
      * @return string
      */
     public function getText()
@@ -130,69 +108,76 @@ class Page
     }
 
     /**
-     * @return string
+     * @param string $text
      */
-    public function getSlug()
+    public function setText($text)
     {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $slug
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
+        $this->text = $text;
     }
 
     /**
      * @return string
      */
-    public function getSeoTitle()
+    public function getAuthorName()
     {
-        return $this->seoTitle;
+        return $this->author_name;
     }
 
     /**
-     * @param string $seoTitle
+     * @param string $author_name
      */
-    public function setSeoTitle($seoTitle)
+    public function setAuthorName($author_name)
     {
-        $this->seoTitle = $seoTitle;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSeoDescription()
-    {
-        return $this->seoDescription;
-    }
-
-    /**
-     * @param string $seoDescription
-     */
-    public function setSeoDescription($seoDescription)
-    {
-        $this->seoDescription = $seoDescription;
+        $this->author_name = $author_name;
     }
 
     /**
      * @return string
      */
-    public function getSeoKeywords()
+    public function getAuthorContact()
     {
-        return $this->seoKeywords;
+        return $this->author_contact;
     }
 
     /**
-     * @param string $seoKeywords
+     * @param string $author_contact
      */
-    public function setSeoKeywords($seoKeywords)
+    public function setAuthorContact($author_contact)
     {
-        $this->seoKeywords = $seoKeywords;
+        $this->author_contact = $author_contact;
     }
 
+    /**
+     * @return string
+     */
+    public function getAuthorInfo()
+    {
+        return $this->author_info;
+    }
+
+    /**
+     * @param string $author_info
+     */
+    public function setAuthorInfo($author_info)
+    {
+        $this->author_info = $author_info;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIp()
+    {
+        return $this->ip;
+    }
+
+    /**
+     * @param string $ip
+     */
+    public function setIp($ip)
+    {
+        $this->ip = $ip;
+    }
 
     /**
      * @return \DateTime
@@ -217,6 +202,10 @@ class Page
     {
         if ($this->getCreated() === null) {
             $this->setCreated(new \DateTime(date('Y-m-d H:i:s')));
+        }
+        if ($this->getIp() === null) {
+            $request = Request::createFromGlobals();
+            $this->setIp($request->getClientIp());
         }
     }
 }

@@ -32,8 +32,8 @@
                     {% endif %}
                 </td>
                 <td>
-                    {% if entity.date %}
-                        {{ entity.date|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}
+                    {% if entity.created %}
+                        {{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}
                     {% endif %}
                 </td>
                 <td style="width: 153px;">

@@ -24,12 +24,12 @@ class PageType extends AbstractType
             ->add('text', 'textarea', [
                 'label' => 'Текст',
                 'required' => false,
-                'attr' => array('class' => 'editor')
+                'attr' => ['class' => 'editor']
             ])
-            ->add('date', null, [
+            ->add('created', null, [
                 'label' => false,
                 'required' => false,
-                'attr' => array('style' => 'display:none;')
+                'attr' => ['style' => 'display:none;'],
             ])
             ->add('seoTitle', 'text', [
                 'label' => 'SEO заголовок',

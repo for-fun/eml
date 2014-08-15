@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% if seoTitle is defined and seoTitle is not empty %}{{ seoTitle }}{% else %}{% if pageTitle is defined %}{{ pageTitle }}{% endif %}- ЕДИНОМЫШЛЕННИКИ.RU{% endif %}</title>
+    <title>{% if seoTitle is defined and seoTitle is not empty %}{{ seoTitle }}{% else %}{% if pageTitle is defined %}{{ pageTitle }}{% endif %} - ЕДИНОМЫШЛЕННИКИ.RU{% endif %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     {% if seoKeywords is defined and seoKeywords is not empty %}
         <meta name="description" content="{{ seoKeywords }}">
