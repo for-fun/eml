@@ -25,7 +25,7 @@
             <tr>
                 <td>{{ entity.name }}</td>
                 <td><a href="" target="_blank">{{ entity.url }}</a></td>
-                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.date %} {{ entity.date|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }} {% endif %}</td>
                 <td style="width: 153px;">
                     <a class="btn btn-default btn-xs" href="{{ path('page_edit', { 'id': entity.id }) }}">Изменить</a>
                     {% if entity.url != "/" %}

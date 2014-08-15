@@ -1,22 +1,3 @@
-.body {
-  padding: 15px;
-}
-
-.content-header {
-  padding-bottom: 30px;
-}
-.content-header .title h3 {
-  margin-top: 7px;
-}
-.content-header .action {
-  text-align: right;
-  padding-top: 5px;
-}
-
-.inline-block {
-  display: inline-block;
-}
-
 .note-editor .btn-default {
   color: #333333;
   background-color: white;
@@ -81,4 +62,23 @@
 .note-editor .btn-default .badge {
   color: white;
   background-color: #333333;
+}
+
+.body {
+  padding: 15px;
+}
+
+.content-header {
+  padding-bottom: 30px;
+}
+.content-header .title h3 {
+  margin-top: 7px;
+}
+.content-header .action {
+  text-align: right;
+  padding-top: 5px;
+}
+
+.inline-block {
+  display: inline-block;
 }

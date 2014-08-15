@@ -6,7 +6,6 @@ confrimDelete = ->
 injectEditor = ->
   $('.editor').summernote
     height: 300
-    focus: true
     toolbar: [
       ['style', ['style']]
       ['style', ['bold', 'italic', 'underline', 'clear']]
@@ -23,5 +22,5 @@ injectEditor = ->
     codemirror: {}
 
 $ ->
-#  do confrimDelete
+  do confrimDelete
   do injectEditor

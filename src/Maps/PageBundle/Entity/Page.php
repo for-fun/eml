@@ -159,7 +159,7 @@ class Page
      */
     public function doStuffOnPrePersist()
     {
-        if ($this->getDate() == null) return;
+        if ($this->getDate() !== null) return;
         $this->setDate(new \DateTime(date('Y-m-d H:i:s')));
     }
 }
