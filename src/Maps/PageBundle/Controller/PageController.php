@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class PageController extends Controller
 {
     /**
-     * Lists all Page entities.
+     * Show Page entiti.
      *
      * @Route("/{slug}-{id}", requirements={"slug" = "[a-zA-Z|-]+", "id" = "\d+"})
      * @Method("GET")
