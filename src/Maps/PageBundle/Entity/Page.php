@@ -33,9 +33,9 @@ class Page
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $url;
+    private $slug;
 
     /**
      * @var text
@@ -83,29 +83,6 @@ class Page
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     * @return Page
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
     }
 
     /**
@@ -161,5 +138,21 @@ class Page
     {
         if ($this->getDate() !== null) return;
         $this->setDate(new \DateTime(date('Y-m-d H:i:s')));
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 }
