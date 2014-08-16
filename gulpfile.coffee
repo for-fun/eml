@@ -53,3 +53,4 @@ gulp.task 'watch', ->
   gulp.watch compassSrcSite, ['compassAdminSite']
 
 gulp.task 'default', ['coffeeAdmin', 'compassAdmin', 'coffeeAdminSite', 'compassAdminSite', 'watch']
+gulp.task 'prod', ['coffeeAdmin', 'compassAdmin', 'coffeeAdminSite', 'compassAdminSite']
