@@ -8,7 +8,7 @@
         </div>
         <div class="col-xs-8 action">
             {% if entity.slug != "/" %}
-                {{ render(controller("MapsPageBundle:Admin/Admin:deleteForm", {'id': entity.id, 'title': 'Удалить страницу', 'class':'btn btn-danger btn-sm'})) }}
+                {{ render(controller("MapsMainBundle:Main:deleteForm", {id: entity.id, url: "page_delete"})) }}
             {% endif %}
         </div>
     </div>

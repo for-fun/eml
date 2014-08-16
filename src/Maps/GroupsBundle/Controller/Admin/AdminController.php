@@ -1,9 +1,9 @@
 <?php
 
-namespace Maps\GroupsBundle\Controller\Groups;
+namespace Maps\GroupsBundle\Controller\Admin;
 
+use Maps\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -13,15 +13,15 @@ use Maps\GroupsBundle\Form\Groups\GroupsType;
 /**
  * Groups\Groups controller.
  *
- * @Route("/groups_groups")
+ * @Route("/admin/groups")
  */
-class GroupsController extends Controller
+class AdminController extends Controller
 {
 
     /**
      * Lists all Groups\Groups entities.
      *
-     * @Route("/", name="groups_groups")
+     * @Route("/", name="groups")
      * @Method("GET")
      * @Template()
      */
@@ -35,12 +35,13 @@ class GroupsController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Groups\Groups entity.
      *
-     * @Route("/", name="groups_groups_create")
+     * @Route("/", name="groups_create")
      * @Method("POST")
-     * @Template("MapsGroupsBundle:Groups\Groups:new.html.twig")
+     * @Template("MapsGroupsBundle:Admin/Admin:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -58,7 +59,7 @@ class GroupsController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -84,50 +85,25 @@ class GroupsController extends Controller
     /**
      * Displays a form to create a new Groups\Groups entity.
      *
-     * @Route("/new", name="groups_groups_new")
+     * @Route("/new", name="groups_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
         $entity = new Groups();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
-    /**
-     * Finds and displays a Groups\Groups entity.
-     *
-     * @Route("/{id}", name="groups_groups_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('MapsGroupsBundle:Groups\Groups')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Groups\Groups entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'form' => $form->createView(),
         );
     }
 
     /**
      * Displays a form to edit an existing Groups\Groups entity.
      *
-     * @Route("/{id}/edit", name="groups_groups_edit")
+     * @Route("/{id}/edit", name="groups_edit")
      * @Method("GET")
      * @Template()
      */
@@ -142,22 +118,22 @@ class GroupsController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id, 'groups_groups_delete');
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Groups\Groups entity.
-    *
-    * @param Groups $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Groups\Groups entity.
+     *
+     * @param Groups $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Groups $entity)
     {
         $form = $this->createForm(new GroupsType(), $entity, array(
@@ -169,12 +145,13 @@ class GroupsController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Groups\Groups entity.
      *
-     * @Route("/{id}", name="groups_groups_update")
+     * @Route("/{id}", name="groups_update")
      * @Method("PUT")
-     * @Template("MapsGroupsBundle:Groups\Groups:edit.html.twig")
+     * @Template("MapsGroupsBundle:Admin/Admin:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -186,7 +163,7 @@ class GroupsController extends Controller
             throw $this->createNotFoundException('Unable to find Groups\Groups entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id, 'groups_delete');
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
@@ -197,20 +174,21 @@ class GroupsController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Groups\Groups entity.
      *
-     * @Route("/{id}", name="groups_groups_delete")
+     * @Route("/{id}", name="groups_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($id, 'groups_groups_delete');
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -227,6 +205,4 @@ class GroupsController extends Controller
 
         return $this->redirect($this->generateUrl('groups_groups'));
     }
-
-
 }

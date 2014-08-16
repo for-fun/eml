@@ -1,5 +1,5 @@
-groups:
-  resource: "@MapsGroupsBundle/Controller/"
+admin_groups:
+  resource: "@MapsGroupsBundle/Controller/Admin/"
   type:     annotation
 
 page:

@@ -39,7 +39,7 @@
                 <td style="width: 153px;">
                     <a class="btn btn-default btn-xs" href="{{ path('page_edit', { 'id': entity.id }) }}">Изменить</a>
                     {% if entity.slug != "/" %}
-                        {{ render(controller("MapsPageBundle:Admin/Admin:deleteForm", {'id': entity.id})) }}
+                        {{ render(controller("MapsMainBundle:Main:deleteForm", {id: entity.id, url: "page_delete", class: "btn-danger btn-xs"})) }}
                     {% endif %}
                 </td>
             </tr>

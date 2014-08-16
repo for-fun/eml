@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Maps\PageBundle\MapsPageBundle(),
             new Maps\GroupsBundle\MapsGroupsBundle(),
+            new Maps\MainBundle\MapsMainBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

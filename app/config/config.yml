@@ -37,6 +37,9 @@ services:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
+    main_controller:
+        class: Maps\MainBundle\Controller\MainController
+
 
 # Assetic Configuration
 assetic:

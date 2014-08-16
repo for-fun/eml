@@ -1,14 +1,11 @@
 <?php
 
-namespace Maps;
+namespace Maps\MainBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller as SymfonyController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-/**
- * Class Controller
- * @package Maps
- */
-class Controller extends SymfonyController
+class MainController extends Controller
 {
 
     /**
@@ -35,6 +32,23 @@ class Controller extends SymfonyController
                 ),
             ))
             ->getForm();
+    }
 
+
+    /**
+     * @param $id
+     * @param $url
+     * @param string $class
+     * @param string $title
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Template()
+     */
+    public function deleteFormAction($id, $url, $class = 'btn-danger', $title = 'Удалить')
+    {
+        $form = $this->createDeleteForm($id, $url, $class, $title);
+
+        return [
+            'delete_form' => $form->createView(),
+        ];
     }
 }

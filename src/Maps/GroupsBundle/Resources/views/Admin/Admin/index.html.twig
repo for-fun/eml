@@ -20,7 +20,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('groups_groups_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="">{{ entity.id }}</a></td>
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.text }}</td>
                 <td>{{ entity.authorname }}</td>
@@ -31,10 +31,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('groups_groups_show', { 'id': entity.id }) }}">show</a>
+                        <a href="">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('groups_groups_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('admin_groups_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -45,7 +45,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('groups_groups_new') }}">
+            <a href="{{ path('admin_groups_new') }}">
                 Create a new entry
             </a>
         </li>

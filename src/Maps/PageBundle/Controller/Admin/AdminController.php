@@ -29,9 +29,9 @@ class AdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('MapsPageBundle:Page')->findAll();
 
-        return array(
+        return [
             'entities' => $entities,
-        );
+        ];
     }
 
     /**
@@ -118,7 +118,6 @@ class AdminController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->myCreateDeleteForm($id);
 
         return array(
             'entity' => $entity,
@@ -162,7 +161,6 @@ class AdminController extends Controller
             throw $this->createNotFoundException('Unable to find Page entity.');
         }
 
-        $deleteForm = $this->myCreateDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
@@ -175,7 +173,6 @@ class AdminController extends Controller
         return array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -187,7 +184,7 @@ class AdminController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->myCreateDeleteForm($id);
+        $form = $this->createDeleteForm($id, 'page_delete');
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -205,12 +202,4 @@ class AdminController extends Controller
         return $this->redirect($this->generateUrl('page'));
     }
 
-    public function deleteFormAction($id, $title = 'Удалить', $class = "btn btn-danger btn-xs")
-    {
-        $deleteForm = $this->myCreateDeleteForm($id, $title, $class);
-
-        return $this->render('@MapsPage/Admin/Admin/delet_form.html.twig', array(
-            'delete_form' => $deleteForm->createView()
-        ));
-    }
 }
