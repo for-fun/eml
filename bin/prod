@@ -1,0 +1,14 @@
+#!/bin/bash
+
+export SYMFONY_ENV=prod
+
+git pull --rebase
+
+composer install --no-dev
+
+app/console doctrine:schema:update --force
+app/console doctrine:ensure-production-settings
+
+app/console cache:clear
+
+gulp prod
