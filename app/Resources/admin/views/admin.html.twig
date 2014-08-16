@@ -21,13 +21,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Admin panel</a>
+            <a class="navbar-brand" target="_blank" href="{{ path('maps_page_page_show') }}"><i class="fa fa-angle-double-left"></i> на сайт</a>
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ path('page') }}">Страницы</a></li>
-                <li><a href="#">Пользователи</a></li>
-            </ul>
+            {{ knp_menu_render('MapsMainBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>

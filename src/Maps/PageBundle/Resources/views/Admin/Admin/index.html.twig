@@ -31,10 +31,8 @@
                         <a href="{{ path("maps_page_page_show_1", {'slug': entity.slug}) }}" target="_blank">{{ entity.slug }}</a>
                     {% endif %}
                 </td>
-                <td>
-                    {% if entity.created %}
-                        {{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}
-                    {% endif %}
+                <td style="width: 150px;">
+                    {{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}
                 </td>
                 <td style="width: 153px;">
                     <a class="btn btn-default btn-xs" href="{{ path('page_edit', { 'id': entity.id }) }}">Изменить</a>

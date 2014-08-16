@@ -1,16 +1,17 @@
 {% extends '@admin_theme/admin.html.twig' %}
 
-{% block body -%}
-    <h1>Groups\Groups edit</h1>
+{% set pageName = "Редактировать группу" %}
+{% block title %}{{ pageName }}{% endblock title %}
 
+{% block body -%}
+    <div class="row content-header">
+        <div class="col-xs-4 title">
+            <h3>{{ pageName }}</h3>
+        </div>
+        <div class="col-xs-8 action">
+            {{ render(controller("MapsMainBundle:Main:deleteForm", {id: entity.id, url: "groups_delete"})) }}
+        </div>
+    </div>
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('groups_groups') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
 {% endblock %}

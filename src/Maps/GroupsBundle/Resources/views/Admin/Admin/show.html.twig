@@ -1,56 +1,56 @@
 {% extends '@admin_theme/admin.html.twig' %}
+{% set pageName = entity.name %}
+{% block title %}{{ pageName }}{% endblock title %}
 
 {% block body -%}
-    <h1>Groups\Groups</h1>
+    <div class="row content-header">
+        <div class="col-xs-4 title">
+            <h3>{{ pageName }}</h3>
+        </div>
+        <div class="col-xs-8 action">
+            <a class="btn btn-info btn-sm" href="{{ path('groups_edit', { 'id': entity.id }) }}">
+                Изменить
+            </a>
+        </div>
+    </div>
 
-    <table class="record_properties">
+    <p><b>Автор:</b></p>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Контакты</th>
+            <th>Информация</th>
+            <th>ip</th>
+            <th>Дата</th>
+        </tr>
+        </thead>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Text</th>
-                <td>{{ entity.text }}</td>
-            </tr>
-            <tr>
-                <th>Author_name</th>
-                <td>{{ entity.authorname }}</td>
-            </tr>
-            <tr>
-                <th>Author_contact</th>
-                <td>{{ entity.authorcontact }}</td>
-            </tr>
-            <tr>
-                <th>Author_info</th>
-                <td>{{ entity.authorinfo }}</td>
-            </tr>
-            <tr>
-                <th>Ip</th>
-                <td>{{ entity.ip }}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
-                <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
-            </tr>
+        <tr>
+            <td>{{ entity.authorName }}</td>
+            <td>{{ entity.authorContact }}</td>
+            <td>{{ entity.authorInfo }}</td>
+            <td>{{ entity.ip }}</td>
+            <td>{{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}</td>
+        </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('groups_groups') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('groups_groups_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <p><b>Группа:</b></p>
+
+    {{ entity.name }}
+    <br>
+    <br>
+    <div class="panel panel-default">
+        <div class="panel-heading">Описание</div>
+        <div class="panel-body">
+            {% if entity.text %}
+                {{ entity.text }}
+            {% else %}
+                Описание не указано...
+            {% endif %}
+        </div>
+    </div>
+
 {% endblock %}

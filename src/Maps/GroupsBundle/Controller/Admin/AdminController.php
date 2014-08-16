@@ -31,9 +31,9 @@ class AdminController extends Controller
 
         $entities = $em->getRepository('MapsGroupsBundle:Groups\Groups')->findAll();
 
-        return array(
+        return [
             'entities' => $entities,
-        );
+        ];
     }
 
     /**
@@ -54,13 +54,13 @@ class AdminController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('groups_groups_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('groups_show', ['id' => $entity->getId()]));
         }
 
-        return array(
+        return [
             'entity' => $entity,
             'form' => $form->createView(),
-        );
+        ];
     }
 
     /**
@@ -72,12 +72,12 @@ class AdminController extends Controller
      */
     private function createCreateForm(Groups $entity)
     {
-        $form = $this->createForm(new GroupsType(), $entity, array(
-            'action' => $this->generateUrl('groups_groups_create'),
+        $form = $this->createForm(new GroupsType(), $entity, [
+            'action' => $this->generateUrl('groups_create'),
             'method' => 'POST',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', ['label' => 'Создать']);
 
         return $form;
     }
@@ -94,10 +94,10 @@ class AdminController extends Controller
         $entity = new Groups();
         $form = $this->createCreateForm($entity);
 
-        return array(
+        return [
             'entity' => $entity,
             'form' => $form->createView(),
-        );
+        ];
     }
 
     /**
@@ -118,13 +118,13 @@ class AdminController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id, 'groups_groups_delete');
+        $deleteForm = $this->createDeleteForm($id, 'groups_delete');
 
-        return array(
+        return [
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -136,12 +136,12 @@ class AdminController extends Controller
      */
     private function createEditForm(Groups $entity)
     {
-        $form = $this->createForm(new GroupsType(), $entity, array(
-            'action' => $this->generateUrl('groups_groups_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new GroupsType(), $entity, [
+            'action' => $this->generateUrl('groups_update', ['id' => $entity->getId()]),
             'method' => 'PUT',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', ['label' => 'Изменить']);
 
         return $form;
     }
@@ -170,14 +170,36 @@ class AdminController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('groups_groups_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('groups_edit', ['id' => $id]));
         }
 
-        return array(
+        return [
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
+    }
+
+    /**
+     * Finds and displays a Groups\Groups entity.
+     *
+     * @Route("/{id}", name="groups_show")
+     * @Method("GET")
+     * @Template()
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('MapsGroupsBundle:Groups\Groups')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Groups\Groups entity.');
+        }
+
+        return [
+            'entity' => $entity,
+        ];
     }
 
     /**
@@ -188,7 +210,7 @@ class AdminController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id, 'groups_groups_delete');
+        $form = $this->createDeleteForm($id, 'groups_delete');
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -203,6 +225,6 @@ class AdminController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('groups_groups'));
+        return $this->redirect($this->generateUrl('groups'));
     }
 }

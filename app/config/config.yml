@@ -80,11 +80,10 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-#mopa_bootstrap:
-#    form:
-#      show_legend: false
-
-
 braincrafted_bootstrap:
     auto_configure:
         assetic: false
+        knp_menu: false
+
+knp_menu:
+    templating: false

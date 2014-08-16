@@ -1,53 +1,43 @@
 {% extends '@admin_theme/admin.html.twig' %}
-
+{% set pageName = "Группы" %}
+{% block title %}{{ pageName }}{% endblock title %}
 {% block body -%}
-    <h1>Groups\Groups list</h1>
+    <div class="row content-header">
+        <div class="col-xs-4 title">
+            <h3>{{ pageName }}</h3>
+        </div>
+        <div class="col-xs-8 action">
+            <a class="btn btn-info btn-sm" href="{{ path('groups_new') }}">Добавить группу</a>
+        </div>
+    </div>
 
-    <table class="records_list">
+    <table class="table table-bordered">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Text</th>
-                <th>Author_name</th>
-                <th>Author_contact</th>
-                <th>Author_info</th>
-                <th>Ip</th>
-                <th>Created</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>id</th>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>ip</th>
+            <th>Дата создания</th>
+            <th>Действия</th>
+        </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.text }}</td>
+                <td style="width: 40px;">{{ entity.id }}</td>
+                <td><a href="{{ path('groups_show', {id: entity.id}) }}">{{ entity.name }}</a></td>
                 <td>{{ entity.authorname }}</td>
-                <td>{{ entity.authorcontact }}</td>
-                <td>{{ entity.authorinfo }}</td>
                 <td>{{ entity.ip }}</td>
-                <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('admin_groups_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <td style="width: 150px;">
+                    {{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}
+                </td>
+                <td style="width: 153px;">
+                    <a class="btn btn-default btn-xs" href="{{ path('groups_edit', { 'id': entity.id }) }}">Изменить</a>
+                    {{ render(controller("MapsMainBundle:Main:deleteForm", {id: entity.id, url: "groups_delete", class: "btn-danger btn-xs"})) }}
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('admin_groups_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+{% endblock %}
