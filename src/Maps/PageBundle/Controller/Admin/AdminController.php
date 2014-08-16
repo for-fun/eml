@@ -2,8 +2,8 @@
 
 namespace Maps\PageBundle\Controller\Admin;
 
+use Maps\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -17,7 +17,6 @@ use Maps\PageBundle\Form\PageType;
  */
 class AdminController extends Controller
 {
-
     /**
      * Lists all Page entities.
      *
