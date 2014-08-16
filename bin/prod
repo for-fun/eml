@@ -6,9 +6,9 @@ git pull --rebase
 
 composer install --no-dev
 
-app/console doctrine:schema:update --force
-app/console doctrine:ensure-production-settings
+php app/console doctrine:schema:update --force
+php app/console doctrine:ensure-production-settings
 
-app/console cache:clear
+php app/console cache:clear
 
 gulp prod
