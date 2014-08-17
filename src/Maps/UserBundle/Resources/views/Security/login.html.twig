@@ -5,7 +5,6 @@
         <div class="alert alert-danger">
             {{ error|trans({}, 'FOSUserBundle') }}
         </div>
-        <br>
     {% endif %}
 
     <form action="{{ path("fos_user_security_check") }}" method="post">
