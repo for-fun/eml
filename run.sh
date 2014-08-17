@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 export SYMFONY_ENV=prod
 
 git pull --rebase
 
-function symfony {
+function symfony () {
     echo "run symfony"
     composer install --no-dev
     php app/console doctrine:schema:update --force
@@ -12,7 +12,7 @@ function symfony {
     php app/console cache:clear --env=prod --no-debug
 }
 
-function node {
+function node () {
     echo "run node"
     npm install
     bower install
