@@ -15,11 +15,13 @@ function symfony {
 function node {
     echo "run node"
     npm install
+    bower install
 }
 
 if [ "$1" == "up" ]; then
     symfony
     gulp prod
+    bower install
 elif [ "$1" == "inst" ]; then
     symfony
     node
