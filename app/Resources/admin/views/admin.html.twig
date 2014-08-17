@@ -24,7 +24,7 @@
             <a class="navbar-brand" target="_blank" href="{{ path('maps_page_page_show') }}"><i class="fa fa-angle-double-left"></i> на сайт</a>
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-            {{ knp_menu_render('MapsMainBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
+            {{ knp_menu_render('MapsMainBundle:MenuBuilder:mainMenu', {'currentClass': 'active'}) }}
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }} <b class="caret"></b></a>

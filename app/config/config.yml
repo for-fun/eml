@@ -33,6 +33,12 @@ twig:
         "%kernel.root_dir%/Resources/site/views": site_theme
 
 services:
+    merk.voter.request:
+        class: Maps\MainBundle\Menu\RequestVoter
+        arguments:
+            - @service_container
+        tags:
+            - { name: knp_menu.voter }
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags:

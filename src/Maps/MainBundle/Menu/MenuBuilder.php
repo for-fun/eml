@@ -5,7 +5,7 @@ namespace Maps\MainBundle\Menu;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
-class Builder extends ContainerAware
+class MenuBuilder extends ContainerAware
 {
     public function mainMenu(FactoryInterface $factory)
     {
