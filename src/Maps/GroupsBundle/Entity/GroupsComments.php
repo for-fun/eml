@@ -51,11 +51,6 @@ class GroupsComments
     private $ip;
 
     /**
-     * @ORM\Column(name="allowed", type="boolean", nullable=true)
-     */
-    private $allowed = false;
-
-    /**
      * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;

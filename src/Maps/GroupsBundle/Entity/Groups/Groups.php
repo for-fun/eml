@@ -55,6 +55,11 @@ class Groups
     private $author_info;
 
     /**
+     * @ORM\Column(name="allowed", type="boolean", nullable=true)
+     */
+    private $allowed = false;
+
+    /**
      * @ORM\Column(name="ip",  type="string", length=255, nullable=true)
      */
     private $ip;
@@ -227,5 +232,21 @@ class Groups
     public function __toString()
     {
         return (string)$this->getName();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAllowed()
+    {
+        return $this->allowed;
+    }
+
+    /**
+     * @param mixed $allowed
+     */
+    public function setAllowed($allowed)
+    {
+        $this->allowed = $allowed;
     }
 }

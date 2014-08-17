@@ -18,8 +18,8 @@
             <th>id</th>
             <th>Имя</th>
             <th>Контакты</th>
+            <th>Текст</th>
             <th>ip</th>
-            <th>Модерация</th>
             <th>Дата создания</th>
             <th>Действия</th>
         </tr>
@@ -30,14 +30,8 @@
                 <td style="width: 40px;">{{ entity.id }}</td>
                 <td><a href="{{ path('groupscomments_show', {id: entity.id}) }}">{{ entity.authorName }}</a></td>
                 <td>{{ entity.authorContact }}</td>
+                <td>{{ entity.authorText }}</td>
                 <td>{{ entity.ip }}</td>
-                <td style="width: 60px;text-align: center;">
-                    {% if entity.allowed %}
-                        <i class="fa fa-check"></i>
-                    {% else %}
-                        <i class="fa fa-ban"></i>
-                    {% endif %}
-                </td>
                 <td style="width: 150px;">
                     {{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}
                 </td>

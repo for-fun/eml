@@ -19,6 +19,7 @@
             <th>Название</th>
             <th>Автор</th>
             <th>ip</th>
+            <th>Модерация</th>
             <th>Дата создания</th>
             <th>Действия</th>
         </tr>
@@ -30,6 +31,13 @@
                 <td><a href="{{ path('groups_show', {id: entity.id}) }}">{{ entity.name }}</a></td>
                 <td>{{ entity.authorName }}</td>
                 <td>{{ entity.ip }}</td>
+                <td style="width: 60px;text-align: center;">
+                    {% if entity.allowed %}
+                        <i class="fa fa-check"></i>
+                    {% else %}
+                        <i class="fa fa-ban"></i>
+                    {% endif %}
+                </td>
                 <td style="width: 150px;">
                     {{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}
                 </td>

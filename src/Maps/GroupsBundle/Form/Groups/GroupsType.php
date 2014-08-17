@@ -53,6 +53,9 @@ class GroupsType extends AbstractType
                 'required' => false,
                 'attr' => ['style' => 'display:none;'],
             ])
+            ->add('allowed', null, [
+                'label' => 'Модерация: '
+            ])
             ->add('created', null, [
                 'label' => false,
                 'required' => false,
