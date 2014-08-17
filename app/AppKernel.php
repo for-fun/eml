@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new Maps\PageBundle\MapsPageBundle(),
             new Maps\GroupsBundle\MapsGroupsBundle(),
             new Maps\MainBundle\MapsMainBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Maps\UserBundle\MapsUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
