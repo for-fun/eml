@@ -17,11 +17,11 @@ node () {
     bower install
 }
 
-if [ "$1" == "up" ]; then
+if [ "$1" = "up" ]; then
     symfony
     gulp prod
     bower install
-elif [ "$1" == "inst" ]; then
+elif [ "$1" = "inst" ]; then
     symfony
     node
     gulp prod
