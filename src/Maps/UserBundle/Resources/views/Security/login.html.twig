@@ -2,7 +2,10 @@
 
 {% block fos_user_content %}
     {% if error %}
-        <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+        <div class="alert alert-danger">
+            {{ error|trans({}, 'FOSUserBundle') }}
+        </div>
+        <br>
     {% endif %}
 
     <form action="{{ path("fos_user_security_check") }}" method="post">
@@ -18,7 +21,8 @@
         </div>
         <div class="checkbox">
 
-            <label for="remember_me"><input type="checkbox" id="remember_me" name="_remember_me" value="on"/>{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+            <label for="remember_me"><input type="checkbox" id="remember_me" name="_remember_me" value="on"/>{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+            </label>
         </div>
 
         <input class="btn btn-default" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"/>
