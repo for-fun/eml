@@ -1,4 +1,6 @@
 {% extends '@admin_theme/admin.html.twig' %}
+{# entity \Maps\GroupsBundle\Entity\Groups\Groups #}
+{# comment \Maps\GroupsBundle\Entity\GroupsComments #}
 {% set pageName = entity.name %}
 {% block title %}{{ pageName }}{% endblock title %}
 
@@ -54,18 +56,38 @@
     </div>
 
     <br/>
+    <hr/>
     <br/>
 
-    <h3>Комментарии</h3>
-    <hr/>
+    <h3>Заявки:</h3>
 
-    {% for comment in entity.comments %}
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ comment.id }}</div>
-            <div class="panel-body">
-                {{ comment.text }}
-            </div>
-        </div>
-    {% endfor %}
+    {% if entity.comments %}
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Имя</th>
+                <th>Контакты</th>
+                <th>текст</th>
+                <th>ip</th>
+                <th>Дата</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for comment in entity.comments %}
+                <tr>
+                    <td>{{ comment.id }}</td>
+                    <td>{{ comment.authorName }}</td>
+                    <td>{{ comment.authorContact }}</td>
+                    <td>{{ comment.authorText }}</td>
+                    <td>{{ comment.ip }}</td>
+                    <td>{{ comment.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        Заявок нету...
+    {% endif %}
 
 {% endblock %}

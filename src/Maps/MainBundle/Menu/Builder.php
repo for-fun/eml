@@ -14,6 +14,7 @@ class Builder extends ContainerAware
         $menu->setCurrent('active');
         $menu->addChild('Страницы', array('route' => 'page'));
         $menu->addChild('Группы', array('route' => 'groups'));
+        $menu->addChild('Заявки', array('route' => 'groupscomments'));
         $menu->addChild('Пользователи', array('uri' => '#user'));
 
         return $menu;

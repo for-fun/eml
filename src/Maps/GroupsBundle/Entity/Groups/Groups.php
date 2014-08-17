@@ -2,10 +2,10 @@
 
 namespace Maps\GroupsBundle\Entity\Groups;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\PrePersist;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -18,8 +18,6 @@ use Symfony\Component\HttpFoundation\Request;
 class Groups
 {
     /**
-     * @var integer
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -32,56 +30,57 @@ class Groups
     private $comments;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="text", type="text", nullable=true)
      */
     private $text;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="author_name", type="string", length=255)
      */
     private $author_name;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="author_contact", type="string", length=255)
      */
     private $author_contact;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="author_info", type="text", nullable=true)
      */
     private $author_info;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="ip",  type="string", length=255, nullable=true)
      */
     private $ip;
 
     /**
-     * @var \DateTime
-     *
      * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->features = new ArrayCollection();
+    }
+
+    /**
+     * @PrePersist
+     */
+    public function doStuffOnPrePersist()
+    {
+        if ($this->getCreated() === null) {
+            $this->setCreated(new \DateTime(date('Y-m-d H:i:s')));
+        }
+        if ($this->getIp() === null) {
+            $request = Request::createFromGlobals();
+            $this->setIp($request->getClientIp());
+        }
     }
 
     /**
@@ -207,20 +206,6 @@ class Groups
     }
 
     /**
-     * @PrePersist
-     */
-    public function doStuffOnPrePersist()
-    {
-        if ($this->getCreated() === null) {
-            $this->setCreated(new \DateTime(date('Y-m-d H:i:s')));
-        }
-        if ($this->getIp() === null) {
-            $request = Request::createFromGlobals();
-            $this->setIp($request->getClientIp());
-        }
-    }
-
-    /**
      * @return mixed
      */
     public function getComments()
@@ -234,5 +219,13 @@ class Groups
     public function setComments($comments)
     {
         $this->comments = $comments;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string)$this->getName();
     }
 }

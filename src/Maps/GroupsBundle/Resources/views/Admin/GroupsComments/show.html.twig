@@ -1,0 +1,44 @@
+{% extends '@admin_theme/admin.html.twig' %}
+{# entity \Maps\GroupsBundle\Entity\GroupsComments #}
+{% set pageName = "Заявка # " ~ entity.id ~ " " ~ "   (" ~ entity.groupsId.name ~ ")" %}
+{% block title %}{{ pageName }}{% endblock title %}
+
+{% block body -%}
+    <div class="row content-header">
+        <div class="col-xs-4 title">
+            <h3><a href="{{ path('groups_show', {id: entity.groupsId.id }) }}">{{ entity.groupsId.name }}</a>
+                <i class="fa fa-angle-double-left"></i> {{ pageName }} <a href=""></a></h3>
+        </div>
+        <div class="col-xs-8 action">
+            <a class="btn btn-info btn-sm" href="{{ path('groupscomments_edit', { 'id': entity.id }) }}">
+                Изменить
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Контакты</th>
+            {% if entity.authorText %}
+                <th>Информация</th>
+            {% endif %}
+            <th>ip</th>
+            <th>Дата</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ entity.authorName }}</td>
+            <td>{{ entity.authorContact }}</td>
+            {% if entity.authorText %}
+                <td>{{ entity.authorText }}</td>
+            {% endif %}
+            <td>{{ entity.ip }}</td>
+            <td>{{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

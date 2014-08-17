@@ -15,7 +15,7 @@ use Maps\GroupsBundle\Form\Groups\GroupsType;
  *
  * @Route("/admin/groups")
  */
-class AdminController extends Controller
+class GroupsController extends Controller
 {
 
     /**

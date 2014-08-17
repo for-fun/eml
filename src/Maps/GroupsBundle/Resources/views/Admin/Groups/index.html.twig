@@ -1,4 +1,5 @@
 {% extends '@admin_theme/admin.html.twig' %}
+{# entity \Maps\GroupsBundle\Entity\Groups\Groups #}
 {% set pageName = "Группы" %}
 {% block title %}{{ pageName }}{% endblock title %}
 {% block body -%}
@@ -27,7 +28,7 @@
             <tr>
                 <td style="width: 40px;">{{ entity.id }}</td>
                 <td><a href="{{ path('groups_show', {id: entity.id}) }}">{{ entity.name }}</a></td>
-                <td>{{ entity.authorname }}</td>
+                <td>{{ entity.authorName }}</td>
                 <td>{{ entity.ip }}</td>
                 <td style="width: 150px;">
                     {{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}

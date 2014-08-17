@@ -1,10 +1,10 @@
 <?php
 
-namespace Maps\GroupsBundle\Tests\Controller\Groups;
+namespace Maps\GroupsBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class GroupsControllerTest extends WebTestCase
+class GroupsCommentsControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class GroupsControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/groups_groups/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /groups_groups/");
+        $crawler = $client->request('GET', '/groupscomments/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /groupscomments/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'maps_groupsbundle_groups_groups[field_name]'  => 'Test',
+            'maps_groupsbundle_groupscomments[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class GroupsControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'maps_groupsbundle_groups_groups[field_name]'  => 'Foo',
+            'maps_groupsbundle_groupscomments[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 
