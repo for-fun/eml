@@ -1,16 +1,19 @@
 {% extends '@admin_theme/admin.html.twig' %}
+{# entity \Maps\GroupsBundle\Entity\GroupsComments #}
+{% set pageName = "Редактировать заявку #" ~ entity.id %}
+{% block title %}{{ pageName }}{% endblock title %}
 
 {% block body -%}
-    <h1>GroupsComments edit</h1>
+    <div class="row content-header">
+        <div class="col-xs-6 title">
+            <h3><a href="{{ path('groups_show', {id: entity.groupsId.id }) }}">Группа #{{ entity.groupsId.id }}</a>
+                <i class="fa fa-angle-double-left"></i> {{ pageName }}</h3>
+        </div>
+        <div class="col-xs-6 action">
+            {{ render(controller("MapsMainBundle:Main:deleteForm", {id: entity.id, url: "groupscomments_delete"})) }}
+        </div>
+    </div>
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('groupscomments') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
 {% endblock %}

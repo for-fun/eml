@@ -28,7 +28,7 @@ class MainController extends Controller
             ->add('submit', 'submit', array(
                 'label' => $title,
                 'attr' => array(
-                    'class' => $class . " deleteBtn",
+                    'class' => $class . " deleteBtn btn-sm",
                 ),
             ))
             ->getForm();

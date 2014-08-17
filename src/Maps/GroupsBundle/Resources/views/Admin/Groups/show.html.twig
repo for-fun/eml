@@ -13,6 +13,7 @@
             <a class="btn btn-info btn-sm" href="{{ path('groups_edit', { 'id': entity.id }) }}">
                 Изменить
             </a>
+            {{ render(controller("MapsMainBundle:Main:deleteForm", {id: entity.id, url: "groups_delete"})) }}
         </div>
     </div>
 
@@ -23,7 +24,9 @@
         <tr>
             <th>Имя</th>
             <th>Контакты</th>
-            <th>Информация</th>
+            {% if entity.authorInfo %}
+                <th>Информация</th>
+            {% endif %}
             <th>ip</th>
             <th>Дата</th>
         </tr>
@@ -32,7 +35,9 @@
         <tr>
             <td>{{ entity.authorName }}</td>
             <td>{{ entity.authorContact }}</td>
-            <td>{{ entity.authorInfo }}</td>
+            {% if entity.authorInfo %}
+                <td>{{ entity.authorInfo }}</td>
+            {% endif %}
             <td>{{ entity.ip }}</td>
             <td>{{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}</td>
         </tr>
@@ -61,7 +66,7 @@
 
     <h3>Заявки:</h3>
 
-    {% if entity.comments %}
+    {% if entity.comments.count > 0 %}
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -87,7 +92,9 @@
             </tbody>
         </table>
     {% else %}
-        Заявок нету...
+        <div class="alert alert-warning">
+            Заявок нету...
+        </div>
     {% endif %}
 
 {% endblock %}

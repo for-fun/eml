@@ -1,15 +1,15 @@
 {% extends '@admin_theme/admin.html.twig' %}
+{# entity \Maps\GroupsBundle\Entity\GroupsComments #}
+{% set pageName = "Создать заявку" ~ entity.id %}
+{% block title %}{{ pageName }}{% endblock title %}
 
 {% block body -%}
-    <h1>GroupsComments creation</h1>
+    <div class="row content-header">
+        <div class="col-xs-4 title">
+            <h3>{{ pageName }}</h3>
+        </div>
+    </div>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('groupscomments') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

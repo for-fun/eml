@@ -29,12 +29,13 @@ class GroupsCommentsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MapsGroupsBundle:GroupsComments')->findAll();
+        $entities = $em->getRepository('MapsGroupsBundle:GroupsComments')->findBy(array(), array('id' => 'DESC'));
 
-        return array(
+        return [
             'entities' => $entities,
-        );
+        ];
     }
+
     /**
      * Creates a new GroupsComments entity.
      *
@@ -58,7 +59,7 @@ class GroupsCommentsController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -91,11 +92,11 @@ class GroupsCommentsController extends Controller
     public function newAction()
     {
         $entity = new GroupsComments();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -119,7 +120,7 @@ class GroupsCommentsController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -145,19 +146,19 @@ class GroupsCommentsController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a GroupsComments entity.
-    *
-    * @param GroupsComments $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a GroupsComments entity.
+     *
+     * @param GroupsComments $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(GroupsComments $entity)
     {
         $form = $this->createForm(new GroupsCommentsType(), $entity, array(
@@ -169,6 +170,7 @@ class GroupsCommentsController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing GroupsComments entity.
      *
@@ -197,11 +199,12 @@ class GroupsCommentsController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a GroupsComments entity.
      *
@@ -241,7 +244,6 @@ class GroupsCommentsController extends Controller
             ->setAction($this->generateUrl('groupscomments_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

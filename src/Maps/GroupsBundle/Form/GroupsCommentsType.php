@@ -15,13 +15,35 @@ class GroupsCommentsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('authorName')
-            ->add('authorContact')
-            ->add('authorText')
-            ->add('ip')
-            ->add('allowed')
-            ->add('created')
-            ->add('groupsId')
+            ->add('authorName', 'text', [
+                'label' => 'Имя: *',
+            ])
+            ->add('authorContact', 'text', [
+                'label' => 'Контакты: *',
+            ])
+            ->add('authorText', 'textarea', [
+                'label' => 'О себе:',
+                'required' => false,
+            ])
+            ->add('ip', null, [
+                'label' => false,
+                'required' => false,
+                'attr' => ['style' => 'display:none;'],
+            ])
+            ->add('allowed', null, [
+                'label' => 'Модерация: '
+            ])
+            ->add('created', null, [
+                'label' => false,
+                'required' => false,
+                'attr' => ['style' => 'display:none;'],
+            ])
+            ->add('groupsId', null, [
+                'label' => 'Название: *',
+                'attr' => [
+                    'placeholder' => 'Название, отображающее суть группы'
+                ],
+            ])
         ;
     }
     

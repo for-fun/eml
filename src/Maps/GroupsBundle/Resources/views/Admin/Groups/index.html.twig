@@ -35,7 +35,7 @@
                 </td>
                 <td style="width: 153px;">
                     <a class="btn btn-default btn-xs" href="{{ path('groups_edit', { 'id': entity.id }) }}">Изменить</a>
-                    {{ render(controller("MapsMainBundle:Main:deleteForm", {id: entity.id, url: "groups_delete", class: "btn-danger btn-xs"})) }}
+                    {{ render(controller("MapsMainBundle:Main:deleteForm", {id: entity.id, url: "groups_delete", class:"btn-danger btn-xs"})) }}
                 </td>
             </tr>
         {% endfor %}
