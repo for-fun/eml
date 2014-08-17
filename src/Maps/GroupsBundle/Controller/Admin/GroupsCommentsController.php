@@ -3,7 +3,7 @@
 namespace Maps\GroupsBundle\Controller\Admin;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Maps\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -41,7 +41,7 @@ class GroupsCommentsController extends Controller
      *
      * @Route("/", name="groupscomments_create")
      * @Method("POST")
-     * @Template("MapsGroupsBundle:GroupsComments:new.html.twig")
+     * @Template("MapsGroupsBundle:Admin/GroupsComments:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -117,11 +117,8 @@ class GroupsCommentsController extends Controller
             throw $this->createNotFoundException('Unable to find GroupsComments entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return array(
             'entity' => $entity,
-            'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -143,12 +140,10 @@ class GroupsCommentsController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -176,7 +171,7 @@ class GroupsCommentsController extends Controller
      *
      * @Route("/{id}", name="groupscomments_update")
      * @Method("PUT")
-     * @Template("MapsGroupsBundle:GroupsComments:edit.html.twig")
+     * @Template("MapsGroupsBundle:Admin/GroupsComments:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -188,7 +183,6 @@ class GroupsCommentsController extends Controller
             throw $this->createNotFoundException('Unable to find GroupsComments entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
@@ -201,7 +195,6 @@ class GroupsCommentsController extends Controller
         return array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -213,7 +206,7 @@ class GroupsCommentsController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($id, 'groupscomments_delete');
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -229,21 +222,5 @@ class GroupsCommentsController extends Controller
         }
 
         return $this->redirect($this->generateUrl('groupscomments'));
-    }
-
-    /**
-     * Creates a form to delete a GroupsComments entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('groupscomments_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm();
     }
 }
