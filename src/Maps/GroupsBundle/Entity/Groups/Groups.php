@@ -2,7 +2,9 @@
 
 namespace Maps\GroupsBundle\Entity\Groups;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\PrePersist;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -23,6 +25,11 @@ class Groups
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @OneToMany(targetEntity="Maps\GroupsBundle\Entity\GroupsComments", mappedBy="groupsId", cascade={"ALL"})
+     */
+    private $comments;
 
     /**
      * @var string
@@ -72,6 +79,10 @@ class Groups
      * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
+
+    public function __construct() {
+        $this->features = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -207,5 +218,21 @@ class Groups
             $request = Request::createFromGlobals();
             $this->setIp($request->getClientIp());
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param mixed $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
     }
 }

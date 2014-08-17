@@ -53,4 +53,19 @@
         </div>
     </div>
 
+    <br/>
+    <br/>
+
+    <h3>Комментарии</h3>
+    <hr/>
+
+    {% for comment in entity.comments %}
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ comment.id }}</div>
+            <div class="panel-body">
+                {{ comment.text }}
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}
