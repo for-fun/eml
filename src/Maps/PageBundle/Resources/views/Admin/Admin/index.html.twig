@@ -26,9 +26,9 @@
                 <td>{{ entity.name }}</td>
                 <td>
                     {% if entity.slug == "/" %}
-                        <a href="{{ path("maps_page_page_show") }}" target="_blank">{{ entity.slug }}</a>
+                        <a href="/" target="_blank">{{ entity.slug }}</a>
                     {% else %}
-                        <a href="{{ path("maps_page_page_show_1", {'slug': entity.slug}) }}" target="_blank">{{ entity.slug }}</a>
+                        <a href="{{ path("site_page_show", {'slug': entity.slug}) }}" target="_blank">{{ entity.slug }}</a>
                     {% endif %}
                 </td>
                 <td style="width: 150px;">

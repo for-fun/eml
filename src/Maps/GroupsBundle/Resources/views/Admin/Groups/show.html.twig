@@ -82,7 +82,7 @@
             {% for comment in entity.comments %}
                 <tr>
                     <td>{{ comment.id }}</td>
-                    <td>{{ comment.authorName }}</td>
+                    <td><a href="{{ path("groupscomments_show", {id:comment.id}) }}">{{ comment.authorName }}</a></td>
                     <td>{{ comment.authorContact }}</td>
                     <td>{{ comment.authorText }}</td>
                     <td>{{ comment.ip }}</td>

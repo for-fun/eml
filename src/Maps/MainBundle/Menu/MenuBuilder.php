@@ -9,13 +9,23 @@ class MenuBuilder extends ContainerAware
 {
     public function mainMenu(FactoryInterface $factory)
     {
-        $menu = $factory->createItem('root', array('attributes' => array('class' => 'back_to_homepage')));
+        $menu = $factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav');
-        $menu->setCurrent('active');
-        $menu->addChild('Страницы', array('route' => 'page'))->setAttribute('match', 'page');
-        $menu->addChild('Группы', array('route' => 'groups'))->setAttribute('match', 'groups');
-        $menu->addChild('Заявки', array('route' => 'groupscomments'))->setAttribute('match', 'groups_comments');
-        $menu->addChild('Пользователи', array('uri' => '#user'))->setAttribute('match', 'user');
+        $menu->addChild('Страницы', ['route' => 'page'])->setAttribute('match', 'page');
+        $menu->addChild('Группы', ['route' => 'groups'])->setAttribute('match', 'groups');
+        $menu->addChild('Заявки', ['route' => 'groupscomments'])->setAttribute('match', 'groups_comments');
+
+        return $menu;
+    }
+
+    public function siteMenu(FactoryInterface $factory)
+    {
+        $menu = $factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav');
+        $menu->addChild('Группы', ['route' => 'site_groups']);
+        $menu->addChild('Описание', ['route' => 'site_page_show', 'routeParameters' => ['slug' => 'info']]);
+        $menu->addChild('Поиск', ['uri' => '#user']);
+        $menu->addChild('Форум', ['uri' => 'http://ednml.7bb.ru/'])->setLinkAttributes(['target' => '_blank']);
 
         return $menu;
     }

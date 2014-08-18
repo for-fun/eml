@@ -30,6 +30,9 @@ class RequestVoter implements VoterInterface
         $match = $item->getAttribute('match');
         $subject = $this->container->get('request')->getRequestUri();
         preg_match("/$match/i", $subject, $matches, PREG_OFFSET_CAPTURE);
+        if (!$match) {
+            return null;
+        }
         if (isset($matches[0])) {
             $charNumber = (int)$matches[0][1] + strlen($match);
             $lastString = $subject[$charNumber];

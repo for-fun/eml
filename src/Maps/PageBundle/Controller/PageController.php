@@ -14,8 +14,7 @@ class PageController extends Controller
     /**
      * Show page entity.
      *
-     * @Route("/", defaults={"slug" = "/"})
-     * @Route("/{slug}", requirements={"slug" = "[a-zA-Z-]+"})
+     * @Route("/{slug}/", requirements={"slug" = "[a-zA-Z-]+"}, name="site_page_show")
      * @Method("GET")
      * @Template()
      */

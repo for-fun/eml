@@ -2,6 +2,7 @@
 
 namespace Maps\MainBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -9,31 +10,16 @@ class MainController extends Controller
 {
 
     /**
-     * @param $id
-     * @param $url
-     * @param string $class
-     * @param string $title
-     * @return \Symfony\Component\Form\Form
+     * @Route("/", name="site_home")
+     * @Template()
+     * @return array
      */
-    public function createDeleteForm($id, $url, $class = 'btn-danger', $title = 'Удалить')
+    public function homeAction()
     {
-        return $this->createFormBuilder(array(), array(
-                'attr' => array(
-                    'class' => 'inline-block deleteForm',
-                )
-            )
-        )
-            ->setAction($this->generateUrl($url, array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array(
-                'label' => $title,
-                'attr' => array(
-                    'class' => $class . " deleteBtn btn-sm",
-                ),
-            ))
-            ->getForm();
+        return [
+            'pageTitle' => "Главная страница",
+        ];
     }
-
 
     /**
      * @param $id
@@ -50,5 +36,31 @@ class MainController extends Controller
         return [
             'delete_form' => $form->createView(),
         ];
+    }
+
+    /**
+     * @param $id
+     * @param $url
+     * @param string $class
+     * @param string $title
+     * @return \Symfony\Component\Form\Form
+     */
+    public function createDeleteForm($id, $url, $class = 'btn-danger', $title = 'Удалить')
+    {
+        return $this->createFormBuilder([], [
+                'attr' => [
+                    'class' => 'inline-block deleteForm',
+                ]
+            ]
+        )
+            ->setAction($this->generateUrl($url, ['id' => $id]))
+            ->setMethod('DELETE')
+            ->add('submit', 'submit', [
+                'label' => $title,
+                'attr' => [
+                    'class' => $class . " deleteBtn btn-sm",
+                ],
+            ])
+            ->getForm();
     }
 }

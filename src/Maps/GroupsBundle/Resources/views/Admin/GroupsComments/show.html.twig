@@ -26,7 +26,6 @@
                 <th>Информация</th>
             {% endif %}
             <th>ip</th>
-            <th>Модерация</th>
             <th>Дата</th>
         </tr>
         </thead>
@@ -38,13 +37,6 @@
                 <td>{{ entity.authorText }}</td>
             {% endif %}
             <td>{{ entity.ip }}</td>
-            <td style="width: 60px;text-align: center;">
-                {% if entity.allowed %}
-                    <i class="fa fa-check"></i>
-                {% else %}
-                    <i class="fa fa-ban"></i>
-                {% endif %}
-            </td>
             <td>{{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}</td>
         </tr>
         </tbody>

@@ -2,10 +2,10 @@
 
 namespace Maps\GroupsBundle\Entity\Groups;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\PrePersist;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -248,5 +248,20 @@ class Groups
     public function setAllowed($allowed)
     {
         $this->allowed = $allowed;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'text' => $this->getText(),
+//            'author_name' => $this->getAuthorName(),
+//            'author_info' => $this->getAuthorInfo(),
+//            'author_contact' => $this->getAuthorContact(),
+        ];
     }
 }

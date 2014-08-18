@@ -19,7 +19,7 @@
 <div class="container">
     {% block header %}
         <br>
-        <nav class="navbar navbar-default" role="navigation">
+        <nav class="navbar navbar-default">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -31,11 +31,10 @@
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="/groups">Группы</a></li>
-                    <li><a href="/info">Описание</a></li>
-                    <li><a target="_blank" href="http://ednml.7bb.ru/">Форум</a></li>
-                </ul>
+                {{ knp_menu_render('MapsMainBundle:MenuBuilder:siteMenu', {'currentClass': 'active'}) }}
+                <div class="navbar-form navbar-right">
+                    <a href="#" class="btn btn-default">Добавить группу</a>
+                </div>
             </div>
         </nav>
     {% endblock %}
