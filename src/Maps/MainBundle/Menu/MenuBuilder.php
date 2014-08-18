@@ -22,7 +22,7 @@ class MenuBuilder extends ContainerAware
     {
         $menu = $factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav');
-        $menu->addChild('Группы', ['route' => 'site_groups']);
+        $menu->addChild('Группы', ['route' => 'site_groups'])->setAttribute('match', 'groups');
         $menu->addChild('Описание', ['route' => 'site_page_show', 'routeParameters' => ['slug' => 'info']]);
         $menu->addChild('Поиск', ['uri' => '#user']);
         $menu->addChild('Форум', ['uri' => 'http://ednml.7bb.ru/'])->setLinkAttributes(['target' => '_blank']);
