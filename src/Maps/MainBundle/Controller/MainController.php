@@ -2,6 +2,8 @@
 
 namespace Maps\MainBundle\Controller;
 
+use Maps\GroupsBundle\Entity\Groups\Groups;
+use Maps\GroupsBundle\Form\Groups\GroupsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -28,9 +30,40 @@ class MainController extends Controller
      */
     public function searchAction()
     {
+        $entity = new Groups();
+        $form = $this->createGroupCreateForm($entity);
+
         return [
-            'pageTitle' => "Главная страница",
+            'entity' => $entity,
+            'form' => $form->createView(),
+            'pageTitle' => 'Поиск',
         ];
+    }
+
+    /**
+     * Creates a form to create a Groups\Groups entity.
+     *
+     * @param Groups $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createGroupCreateForm(Groups $entity)
+    {
+        $form = $this->createForm(new GroupsType(), $entity, [
+            'action' => $this->generateUrl('site_groups_create'),
+            'method' => 'POST',
+        ]);
+        $form->remove("allowed");
+        $form->add('captcha', 'captcha', [
+            'label' => 'Введите код: *',
+            'attr' => [
+                'style' => 'margin-top: 10px; width: 220px;'
+            ],
+        ]);
+
+        $form->add('submit', 'submit', ['label' => 'Добавить группу']);
+
+        return $form;
     }
 
     /**
@@ -75,4 +108,5 @@ class MainController extends Controller
             ])
             ->getForm();
     }
+
 }
