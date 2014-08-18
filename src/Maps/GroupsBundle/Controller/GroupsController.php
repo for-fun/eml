@@ -7,6 +7,7 @@ use Maps\GroupsBundle\Entity\Groups\Groups;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @Route("")
@@ -43,7 +44,7 @@ class GroupsController extends Controller
     public function showAction(Groups $group)
     {
         if (!$group->getAllowed()) {
-            return $this->createNotFoundException('Группа не найдена');
+            throw new NotFoundHttpException('Группа не найдена');
         }
 
         return [
