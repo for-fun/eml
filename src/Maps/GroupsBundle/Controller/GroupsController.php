@@ -51,7 +51,7 @@ class GroupsController extends Controller
      * @Route("/groups/{id}", name="site_groups_show")
      * @Method("GET")
      * @Template()
-     * @throws NotFoundHttpException
+     * @param Request $request
      * @return array
      */
     public function showAction(Groups $group, Request $request)
@@ -62,20 +62,6 @@ class GroupsController extends Controller
         if (!$group->getAllowed()) {
             throw new NotFoundHttpException('Группа не найдена');
         }
-
-//        $entity = new GroupsComments();
-//        $id = (int) $request->get('id');
-//        $form = $this->createCommentsCreateForm($entity, $id);
-//        $form->handleRequest($request);
-//
-//        if ($form->isValid()) {
-//            $entity = $form->getData();
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($entity);
-//            $em->flush();
-//
-//            return $this->redirect($this->generateUrl('site_groups_show', ['id' => $id]));
-//        }
         return [
             'group' => $group,
             'pageTitle' => $group->getName(),

@@ -29,7 +29,9 @@ class GroupsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MapsGroupsBundle:Groups\Groups')->findAll();
+        $entities = $em->getRepository('MapsGroupsBundle:Groups\Groups')->findBy([], [
+            'id' => 'DESC',
+        ]);
 
         return [
             'entities' => $entities,
