@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 {{ knp_menu_render('MapsMainBundle:MenuBuilder:siteMenu', {'currentClass': 'active'}) }}
                 <div class="navbar-form navbar-right">
-                    <a href="#" class="btn btn-default">Добавить группу</a>
+                    <a href="{{ path('site_groups_add') }}" class="btn btn-default">Добавить группу</a>
                 </div>
             </div>
         </nav>

@@ -44,6 +44,8 @@ class GroupsCommentsController extends Controller
      * @Route("/", name="groupscomments_create")
      * @Method("POST")
      * @Template("MapsGroupsBundle:Admin/GroupsComments:new.html.twig")
+     * @param Request $request
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function createAction(Request $request)
     {

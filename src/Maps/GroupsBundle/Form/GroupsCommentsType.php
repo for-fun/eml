@@ -25,16 +25,6 @@ class GroupsCommentsType extends AbstractType
                 'label' => 'О себе:',
                 'required' => false,
             ])
-            ->add('ip', null, [
-                'label' => false,
-                'required' => false,
-                'attr' => ['style' => 'display:none;'],
-            ])
-            ->add('created', null, [
-                'label' => false,
-                'required' => false,
-                'attr' => ['style' => 'display:none;'],
-            ])
             ->add('groupsId', null, [
                 'label' => 'Название: *',
                 'attr' => [

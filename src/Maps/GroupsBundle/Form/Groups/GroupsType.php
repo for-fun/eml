@@ -25,6 +25,7 @@ class GroupsType extends AbstractType
                 'label' => 'Описание:',
                 'required' => false,
                 'attr' => [
+                    'style' => 'height: 80px;',
                     'placeholder' => 'Краткое описание целей группы'
                 ],
 
@@ -47,11 +48,6 @@ class GroupsType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Дополнительные данные о себе по желанию'
                 ],
-            ])
-            ->add('ip', null, [
-                'label' => false,
-                'required' => false,
-                'attr' => ['style' => 'display:none;'],
             ])
             ->add('allowed', null, [
                 'label' => 'Модерация: '

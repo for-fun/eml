@@ -2,6 +2,9 @@
 {# group \Proxies\__CG__\Maps\GroupsBundle\Entity\Groups\Groups #}
 {# comment \Proxies\__CG__\Maps\GroupsBundle\Entity\GroupsComments #}
 {% block body %}
+    <script>
+        window.group_id = {{ group.id }};
+    </script>
     <h3>{{ group.name }}</h3>
     <p>{{ group.text }}</p>
     <br/>
@@ -25,4 +28,8 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <br/>
+
+    {{ form(commentsForm) }}
 {% endblock %}

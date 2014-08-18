@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\PrePersist;
+use Maps\GroupsBundle\Entity\GroupsComments;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -72,6 +73,7 @@ class Groups
     public function __construct()
     {
         $this->features = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -224,6 +226,13 @@ class Groups
     public function setComments($comments)
     {
         $this->comments = $comments;
+    }
+
+
+    public function addComment(GroupsComments $comment)
+    {
+        $comment->setGroupsId($comment);
+        $this->comments->add($comment);
     }
 
     /**

@@ -2,6 +2,16 @@
 {# groups \Proxies\__CG__\Maps\GroupsBundle\Entity\Groups\Groups #}
 {# group \Proxies\__CG__\Maps\GroupsBundle\Entity\Groups\Groups #}
 {% block body %}
+    {% set notice = app.session.flashbag.get('notice') %}
+    {% if notice is not empty %}
+        {% for flashMessage in notice %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        <br/>
+    {% endif %}
+
     <div class="groups clearfix">
         {% for group in groups %}
             <div class="item">
