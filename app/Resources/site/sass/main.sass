@@ -1,13 +1,15 @@
-//.body
-//  padding: 15px
-//
-//.content-header
-//  padding-bottom: 30px
-//  .title h3
-//    margin-top: 7px
-//  .action
-//    text-align: right
-//    padding-top: 5px
-//
-//.inline-block
-//  display: inline-block
+.clearfix
+  zoom: 1
+  &:before, &:after
+    content: "\0020"
+    display: block
+    height: 0
+    overflow: hidden
+  &:after
+    clear: both
+.groups
+  .item
+    padding-bottom: 20px
+    width: 50%
+    display: table
+    float: left

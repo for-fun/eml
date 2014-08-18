@@ -2,13 +2,13 @@
 
 namespace Maps\GroupsBundle\Controller\Admin;
 
-use Symfony\Component\HttpFoundation\Request;
 use Maps\Controller;
+use Maps\GroupsBundle\Entity\GroupsComments;
+use Maps\GroupsBundle\Form\GroupsCommentsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Maps\GroupsBundle\Entity\GroupsComments;
-use Maps\GroupsBundle\Form\GroupsCommentsType;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * GroupsComments controller.
@@ -29,7 +29,9 @@ class GroupsCommentsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MapsGroupsBundle:GroupsComments')->findBy(array(), array('id' => 'DESC'));
+        $entities = $em->getRepository('MapsGroupsBundle:GroupsComments')->findBy([], [
+            'id' => 'DESC',
+        ]);
 
         return [
             'entities' => $entities,
@@ -54,13 +56,13 @@ class GroupsCommentsController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('groupscomments_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('groupscomments_show', ['id' => $entity->getId()]));
         }
 
-        return array(
+        return [
             'entity' => $entity,
             'form' => $form->createView(),
-        );
+        ];
     }
 
     /**
@@ -72,12 +74,12 @@ class GroupsCommentsController extends Controller
      */
     private function createCreateForm(GroupsComments $entity)
     {
-        $form = $this->createForm(new GroupsCommentsType(), $entity, array(
+        $form = $this->createForm(new GroupsCommentsType(), $entity, [
             'action' => $this->generateUrl('groupscomments_create'),
             'method' => 'POST',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', ['label' => 'Create']);
 
         return $form;
     }
@@ -94,10 +96,10 @@ class GroupsCommentsController extends Controller
         $entity = new GroupsComments();
         $form = $this->createCreateForm($entity);
 
-        return array(
+        return [
             'entity' => $entity,
             'form' => $form->createView(),
-        );
+        ];
     }
 
     /**
@@ -117,9 +119,9 @@ class GroupsCommentsController extends Controller
             throw $this->createNotFoundException('Unable to find GroupsComments entity.');
         }
 
-        return array(
+        return [
             'entity' => $entity,
-        );
+        ];
     }
 
     /**
@@ -141,10 +143,10 @@ class GroupsCommentsController extends Controller
 
         $editForm = $this->createEditForm($entity);
 
-        return array(
+        return [
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -156,12 +158,12 @@ class GroupsCommentsController extends Controller
      */
     private function createEditForm(GroupsComments $entity)
     {
-        $form = $this->createForm(new GroupsCommentsType(), $entity, array(
-            'action' => $this->generateUrl('groupscomments_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new GroupsCommentsType(), $entity, [
+            'action' => $this->generateUrl('groupscomments_update', ['id' => $entity->getId()]),
             'method' => 'PUT',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', ['label' => 'Update']);
 
         return $form;
     }
@@ -189,13 +191,13 @@ class GroupsCommentsController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('groupscomments_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('groupscomments_edit', ['id' => $id]));
         }
 
-        return array(
+        return [
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
-        );
+        ];
     }
 
     /**

@@ -23,9 +23,17 @@ class GroupsController extends Controller
      */
     public function indexAction()
     {
+        $em = $this->getEm();
+        $groups = $em->getRepository('MapsGroupsBundle:Groups\Groups')->findBy([
+            'allowed' => true,
+        ], [
+            'id' => 'DESC',
+        ]);
+
         $title = "Список инициативных групп";
 
         return [
+            'groups' => $groups,
             'pageTitle' => $title,
             'seoKeywords' => $title,
             'seoDescription' => $title,
