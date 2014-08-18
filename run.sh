@@ -6,7 +6,7 @@ git pull --rebase
 
 symfony () {
     echo "run symfony"
-    composer install --no-dev --env=prod
+    composer install --no-dev
     php app/console doctrine:schema:update --force
     php app/console doctrine:ensure-production-settings
     php app/console cache:clear --env=prod --no-debug
