@@ -43,7 +43,7 @@ class GroupsController extends Controller
     public function showAction(Groups $group)
     {
         if (!$group->getAllowed()) {
-            die();
+            return $this->createNotFoundException('Группа не найдена');
         }
 
         return [

@@ -27,8 +27,12 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td style="width: 40px;">{{ entity.id }}</td>
-                <td><a href="{{ path('groups_show', {id: entity.id}) }}">{{ entity.name }}</a></td>
+                <td style="width: 40px;">
+                    <a href="{{ path('site_groups_show', {id: entity.id}) }}" target="_blank">{{ entity.id }}</a>
+                </td>
+                <td>
+                    <a href="{{ path('groups_show', {id: entity.id}) }}">{{ entity.name }}</a>
+                </td>
                 <td>{{ entity.authorName }}</td>
                 <td>{{ entity.ip }}</td>
                 <td style="width: 60px;text-align: center;">

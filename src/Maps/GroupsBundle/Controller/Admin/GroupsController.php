@@ -41,7 +41,7 @@ class GroupsController extends Controller
      *
      * @Route("/", name="groups_create")
      * @Method("POST")
-     * @Template("MapsGroupsBundle:Admin/Admin:new.html.twig")
+     * @Template("MapsGroupsBundle:Admin/Groups:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -151,7 +151,7 @@ class GroupsController extends Controller
      *
      * @Route("/{id}", name="groups_update")
      * @Method("PUT")
-     * @Template("MapsGroupsBundle:Admin/Admin:edit.html.twig")
+     * @Template("MapsGroupsBundle:Admin/Groups:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
