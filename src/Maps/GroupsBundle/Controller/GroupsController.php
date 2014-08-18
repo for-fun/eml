@@ -212,9 +212,9 @@ class GroupsController extends Controller
         ]);
         $form->add("groupsId", null, [
             'label' => false,
-//            'attr' => [
-//                'style' => 'display: none;'
-//            ],
+            'attr' => [
+                'style' => 'display: none;'
+            ],
         ]);
         $form->add('captcha', 'captcha', [
             'label' => 'Введите код: * ',
