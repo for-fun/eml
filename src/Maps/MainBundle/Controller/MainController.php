@@ -22,6 +22,18 @@ class MainController extends Controller
     }
 
     /**
+     * @Route("/search/", name="site_search")
+     * @Template()
+     * @return array
+     */
+    public function searchAction()
+    {
+        return [
+            'pageTitle' => "Главная страница",
+        ];
+    }
+
+    /**
      * @param $id
      * @param $url
      * @param string $class
