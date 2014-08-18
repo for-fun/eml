@@ -99,4 +99,9 @@ fos_user:
     firewall_name: main
     user_class: Maps\UserBundle\Entity\User
 
-gregwar_captcha: ~
+gregwar_captcha:
+    width: 110
+    background_color: [255, 255, 255]
+    length: 4
+    quality: 100
+    charset: 1234567890

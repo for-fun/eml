@@ -13,3 +13,69 @@
     width: 50%
     display: table
     float: left
+
+.search-main
+  width: 500px
+  height: 50px
+  margin: 200px auto 0 auto
+  position: relative
+  .btn
+    position: absolute
+    right: 0
+    top: 0
+
+.twitter-typeahead
+  position: absolute
+  top: 0
+  left: 0
+
+.typeahead
+  width: 390px
+  height: 45px
+  padding: 8px 12px
+  font-size: 18px
+  line-height: 30px
+  border: 2px solid #ccc
+  border-radius: 8px
+  outline: none
+  position: absolute
+  top: 0
+  left: 0
+
+.tt-dropdown-menu
+  position: absolute
+  top: 100%
+  left: 0
+  z-index: 1000
+  display: none
+  float: left
+  width: 390px
+  padding: 8px 0
+  list-style: none
+  font-size: 14px
+  background-color: #ffffff
+  border: 1px solid #cccccc
+  border-radius: 4px
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
+  background-clip: padding-box
+
+.tt-suggestion
+  > p
+    margin: 0
+    display: block
+    padding: 8px 20px
+    clear: both
+    font-weight: normal
+    color: #333333
+    white-space: nowrap
+    font-size: 15px
+    &:hover, &:focus
+      color: #ffffff
+      text-decoration: none
+      outline: 0
+      background-color: #428bca
+  &.tt-cursor p
+    color: #ffffff
+    text-decoration: none
+    outline: 0
+    background-color: #428bca
