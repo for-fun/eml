@@ -33,6 +33,7 @@ class MenuBuilder extends ContainerAware
     {
         $menu = $factory->createItem('root');
         $menu->addChild('Главная', ['route' => 'site_home']);
+        $menu->addChild('Список инициативных групп', ['route' => 'site_groups']);
         $menu->addChild('Тех поддержка', ['route' => 'site_page_show', 'routeParameters' => ['slug' => 'info']]);
 
         return $menu;
