@@ -16,7 +16,8 @@
     {% endblock %}
 </head>
 <body class="body">
-<div class="container">
+{% block containerStart %}
+<div class="container">{% endblock %}
     {% block header %}
         <br>
         <nav class="navbar navbar-default">
@@ -39,7 +40,11 @@
         </nav>
     {% endblock %}
     {% block body %}{% endblock %}
+    {% block containerEnd %}
 </div>
+{% endblock %}
+<br/>
+<br/>
 {% block javascripts %}
     <script src="/vendor/jquery/dist/jquery.min.js"></script>
     <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>

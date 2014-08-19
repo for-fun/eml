@@ -28,4 +28,13 @@ class MenuBuilder extends ContainerAware
 
         return $menu;
     }
+
+    public function homeMenu(FactoryInterface $factory)
+    {
+        $menu = $factory->createItem('root');
+        $menu->addChild('Главная', ['route' => 'site_home']);
+        $menu->addChild('Тех поддержка', ['route' => 'site_page_show', 'routeParameters' => ['slug' => 'info']]);
+
+        return $menu;
+    }
 }

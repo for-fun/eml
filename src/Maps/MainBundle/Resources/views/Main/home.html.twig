@@ -1,9 +1,20 @@
 {% extends '@site_theme/site.html.twig' %}
 
+
+{% block containerStart %}{% endblock %}
+{% block header %}{% endblock %}
+{% block containerEnd %}{% endblock %}
 {% block body %}
-    <form class="search-main" method="get" action="/search/">
-        <input type="hidden" name="searchid" value="2168997">
-        <input name="text" disabled="disabled" class="typeahead" type="text" placeholder="Найдите интересную вам группу">
-        <button class="btn btn-success btn-lg" type="submit">&nbsp;&nbsp;Поиск&nbsp;&nbsp;</button>
-    </form>
+    <div class="home-menu">
+        {{ knp_menu_render('MapsMainBundle:MenuBuilder:homeMenu', {'currentClass': 'active'}) }}
+    </div>
+    <div class="home-center">
+        <div class="home-name">Единомышленники</div>
+        <div class="home-name-bottom">Введите тему поиска единомышленников!</div>
+        <form class="search-main" method="get" action="/search/">
+            <input type="hidden" name="searchid" value="2168997">
+            <input name="text" disabled="disabled" class="typeahead" type="text" placeholder="">
+            <button class="btn-submit" type="submit">&nbsp;&nbsp;Поиск&nbsp;&nbsp;</button>
+        </form>
+    </div>
 {% endblock %}

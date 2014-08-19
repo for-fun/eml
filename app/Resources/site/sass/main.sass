@@ -7,6 +7,16 @@
     overflow: hidden
   &:after
     clear: both
+.home-menu
+  ul
+    padding: 15px 0 0 20px
+  li
+    display: inline-block
+    padding-left: 0
+    margin-left: 0
+    margin-right: 20px
+  a
+    color: #000
 .groups
   .item
     padding-bottom: 20px
@@ -14,12 +24,27 @@
     display: table
     float: left
 
-.search-main
-  width: 500px
-  height: 50px
-  margin: 200px auto 0 auto
+.home-center
+  width: 640px
+  margin: 250px auto 0 auto
   position: relative
-  .btn
+  .home-name
+    font-family: Impact
+    font-size: 28pt
+    color: #326291
+    margin-left: 10px
+    margin-bottom: 5px
+  .home-name-bottom
+    position: absolute
+    bottom: -17px
+    left: 10px
+.search-main
+  width: 640px
+  height: 50px
+  position: relative
+  .btn-submit
+    width: 110px
+    height: 38px
     position: absolute
     right: 0
     top: 0
@@ -30,13 +55,12 @@
   left: 0
 
 .typeahead
-  width: 390px
-  height: 45px
+  width: 520px
+  height: 38px
   padding: 8px 12px
-  font-size: 18px
+  font-size: 16px
   line-height: 30px
-  border: 2px solid #ccc
-  border-radius: 8px
+  border: 1px solid #999
   outline: none
   position: absolute
   top: 0
@@ -49,14 +73,14 @@
   z-index: 1000
   display: none
   float: left
-  width: 390px
+  width: 520px
   padding: 8px 0
   list-style: none
   font-size: 14px
   background-color: #ffffff
   border: 1px solid #cccccc
   border-radius: 4px
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1)
   background-clip: padding-box
 
 .tt-suggestion
@@ -73,9 +97,9 @@
       color: #ffffff
       text-decoration: none
       outline: 0
-      background-color: #428bca
+      background-color: #326291
   &.tt-cursor p
     color: #ffffff
     text-decoration: none
     outline: 0
-    background-color: #428bca
+    background-color: #326291
