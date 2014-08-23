@@ -1,5 +1,5 @@
 searchTypeahead =  (data) ->
-  console.log data
+  return false if $('#maps_groupsbundle_groupscomments_groupsId').length < 1
   arabicPhrases = new Bloodhound(
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name")
     queryTokenizer: Bloodhound.tokenizers.whitespace
