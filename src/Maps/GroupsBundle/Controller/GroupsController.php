@@ -208,7 +208,7 @@ class GroupsController extends Controller
                 'style' => 'margin-top: 10px; width: 220px;'
             ],
         ]);
-        $form->add('submit', 'submit', ['label' => 'Добавить']);
+        $form->add('submit', 'submit', ['label' => 'Вступить']);
 
         return $form;
     }

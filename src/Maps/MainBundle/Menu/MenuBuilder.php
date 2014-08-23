@@ -39,4 +39,12 @@ class MenuBuilder extends ContainerAware
 
         return $menu;
     }
+
+    public function homeMenuRight(FactoryInterface $factory)
+    {
+        $menu = $factory->createItem('root');
+        $menu->addChild('Форум', ['uri' => 'http://ednml.7bb.ru/'])->setLinkAttributes(['target' => '_blank']);
+
+        return $menu;
+    }
 }

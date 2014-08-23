@@ -5,8 +5,18 @@
 {% block header %}{% endblock %}
 {% block containerEnd %}{% endblock %}
 {% block body %}
-    <div class="home-menu">
-        {{ knp_menu_render('MapsMainBundle:MenuBuilder:homeMenu', {'currentClass': 'active'}) }}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8 left">
+                <div class="home-menu">
+                    {{ knp_menu_render('MapsMainBundle:MenuBuilder:homeMenu', {'currentClass': 'active'}) }}
+                </div>
+            </div>
+            <div class="col-xs-4 right">
+                <div class="home-menu rightMenu">
+                    {{ knp_menu_render('MapsMainBundle:MenuBuilder:homeMenuRight', {'currentClass': 'active'}) }}
+                </div>
+            </div>
     </div>
     <div class="home-center">
         <div class="home-name">Единомышленники</div>
@@ -22,6 +32,14 @@
     <br/>
     <br/>
     <div class="home-footer">
-        Единомышленники 2014 (с)
+        <div class="row">
+            <div class="col-xs-6 left">
+                Версия 3.1
+            </div>
+            <div class="col-xs-6 right">
+                Единомышленники 2014 (с)
+            </div>
+        </div>
+    </div>
     </div>
 {% endblock %}
