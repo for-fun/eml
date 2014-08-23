@@ -167,14 +167,9 @@ class GroupsController extends Controller
         if ($form->isValid()) {
             $message = \Swift_Message::newInstance()
                 ->setSubject('Инициативная группа')
-                ->setFrom('mail@ednml.ru')
+                ->setFrom('mail@vld.me')
                 ->setTo('dev@vld.me')
-                ->setBody(
-                    $this->renderView(
-                        'MapsGroupsBundle:Groups:mail.html.twig',
-                        ['name' => "123"]
-                    )
-                );
+                ->setBody("dasd");
             $this->get('mailer')->send($message);
             $entity = $form->getData();
             $em = $this->getDoctrine()->getManager();
