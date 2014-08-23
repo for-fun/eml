@@ -105,3 +105,6 @@ gregwar_captcha:
     length: 4
     quality: 100
     charset: 1234567890
+
+knp_paginator:
+    page_range: 5

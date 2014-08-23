@@ -6,7 +6,6 @@ use Maps\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Maps\SearchBundle\Entity\Search;
 
 
 /**
@@ -25,15 +24,20 @@ class SearchController extends Controller
      */
     public function indexAction()
     {
-        $search = new Search();
-        $search->setName("test name");
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('MapsSearchBundle:Search')->findBy([], [
+            'id' => 'DESC'
+        ]);
 
-        $em = $this->getEm();
-        $em->persist($search);
-        $em->flush();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $entities,
+            $this->get('request')->query->get('page', 1),
+            30
+        );
 
         return [
-            'test' => '11111111111'
+            'pagination' => $pagination,
         ];
     }
 }

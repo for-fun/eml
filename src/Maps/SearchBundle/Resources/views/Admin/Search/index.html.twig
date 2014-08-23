@@ -1,14 +1,39 @@
 {% extends '@admin_theme/admin.html.twig' %}
-{# entity \Maps\GroupsBundle\Entity\Groups\Groups #}
+{# entity \Maps\SearchBundle\Entity\Search #}
 {% set pageName = "История поиска" %}
 {% block title %}{{ pageName }}{% endblock title %}
 {% block body -%}
     <div class="row content-header">
         <div class="col-xs-4 title">
-            <h3>{{ pageName }} {{ test }}</h3>
+            <h3>{{ pageName }}</h3>
         </div>
         <div class="col-xs-8 action">
         </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th style="width: 30px;">id</th>
+            <th>Запрос</th>
+            <th>ip</th>
+            <th>Дата создания</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.ip }}</td>
+                <td>{{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm:ss') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
     </div>
 
 
