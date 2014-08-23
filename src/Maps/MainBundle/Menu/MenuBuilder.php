@@ -14,6 +14,7 @@ class MenuBuilder extends ContainerAware
         $menu->addChild('Страницы', ['route' => 'page'])->setAttribute('match', 'page');
         $menu->addChild('Группы', ['route' => 'groups'])->setAttribute('match', 'groups');
         $menu->addChild('Заявки', ['route' => 'groupscomments'])->setAttribute('match', 'groups_comments');
+        $menu->addChild('История поиска', ['route' => 'search'])->setAttribute('match', 'search');
 
         return $menu;
     }

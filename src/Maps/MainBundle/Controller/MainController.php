@@ -2,11 +2,13 @@
 
 namespace Maps\MainBundle\Controller;
 
+use Maps\Controller;
 use Maps\GroupsBundle\Entity\Groups\Groups;
 use Maps\GroupsBundle\Form\Groups\GroupsType;
+use Maps\SearchBundle\Entity\Search;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class MainController extends Controller
 {
@@ -26,12 +28,22 @@ class MainController extends Controller
     /**
      * @Route("/search/", name="site_search")
      * @Template()
+     * @param Request $request
      * @return array
      */
-    public function searchAction()
+    public function searchAction(Request $request)
     {
         $entity = new Groups();
         $form = $this->createGroupCreateForm($entity);
+        $searchQuery = $request->query->get('text');
+
+        if ($searchQuery !== null) {
+            $search = new Search();
+            $search->setName($searchQuery);
+            $em = $this->getEm();
+            $em->persist($search);
+            $em->flush();
+        }
 
         return [
             'entity' => $entity,

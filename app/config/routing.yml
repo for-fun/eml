@@ -36,3 +36,7 @@ page:
 page_admin:
     resource: "@MapsPageBundle/Controller/Admin/"
     type:     annotation
+
+search_admin:
+    resource: "@MapsSearchBundle/Controller/Admin/"
+    type:     annotation

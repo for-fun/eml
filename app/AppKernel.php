@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Maps\UserBundle\MapsUserBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new Maps\SearchBundle\MapsSearchBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

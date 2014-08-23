@@ -25,6 +25,9 @@ elif [ "$1" = "inst" ]; then
     symfony
     node
     gulp prod
+elif [ "$1" = "style" ]; then
+    bower install
+    gulp prod
 elif [ "$1" = "fixt" ]; then
     php app/console doctrine:fixtures:load
     php app/console cache:clear --env=prod --no-debug
