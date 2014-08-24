@@ -94,9 +94,11 @@ class GroupsController extends Controller
                     $this->renderView(
                         'MapsGroupsBundle:Groups:mail.html.twig',
                         [
+                            'id' => $entity->getId(),
                             'name' => $entity->getName(),
                         ]
-                    )
+                    ),
+                    'text/html'
                 );
             $this->get('mailer')->send($message);
 
