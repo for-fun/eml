@@ -1,0 +1,10 @@
+To: co1dp1ay@ya.ru
+Subject: Hello
+Message-ID: <dccdf212cba6ab7a44ad2449a201dc3e@127.0.0.1>
+Date: Sun, 24 Aug 2014 04:18:48 +0400
+From: co1dp1ay@ya.ru
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+This is a test email.

@@ -1,0 +1,10 @@
+To: apu.eee@gmail.com
+Subject: Hello
+Message-ID: <eb7fae6a963af79fd1f5b1fcf0380c5f@127.0.0.1>
+Date: Sun, 24 Aug 2014 04:18:05 +0400
+From: phpfour@gmail.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+This is a test email.

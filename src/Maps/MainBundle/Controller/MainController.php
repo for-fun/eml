@@ -20,6 +20,21 @@ class MainController extends Controller
      */
     public function homeAction()
     {
+        $mailLogger = new \Swift_Plugins_Loggers_ArrayLogger();
+        $this->get('mailer')->registerPlugin(new \Swift_Plugins_LoggerPlugin($mailLogger));
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Hello')
+            ->setFrom('co1dp1ay@ya.ru')
+            ->setTo('co1dp1ay@ya.ru')
+            ->setBody('This is a test email.');
+
+        if ($this->get('mailer')->send($message)) {
+            echo '[SWIFTMAILER] sent email to ' . "dasda";
+        } else {
+            echo '[SWIFTMAILER] not sending email: ' . $mailLogger->dump();
+        }
+
         return [
             'pageTitle' => "Главная страница",
             'seoDescription' => "ЕДИНОМЫШЛЕННИКИ РУ - Социальная сеть",
