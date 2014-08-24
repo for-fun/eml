@@ -87,7 +87,7 @@ class GroupsController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) {
             $message = \Swift_Message::newInstance()
-                ->setSubject('Инициативная группа (' . $entity->getName() . ')')
+                ->setSubject('Инициативная группа - ' . $entity->getName())
                 ->setFrom('mail@ednml.ru')
                 ->setTo('ald2006@yandex.ru')
                 ->setBody(
