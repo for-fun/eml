@@ -3,19 +3,17 @@ fos_user_security:
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
-
-fos_user_register:
-    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
+    prefix: /admin/profile
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
     prefix: /resetting
 
 fos_user_change_password:
-    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile
+    pattern: /admin/profile/password/change
+    defaults: { _controller: FOSUserBundle:ChangePassword:changePassword }
+    requirements:
+        _method: GET|POST
 
 main:
     resource: "@MapsMainBundle/Controller/"
@@ -35,6 +33,10 @@ page:
 
 page_admin:
     resource: "@MapsPageBundle/Controller/Admin/"
+    type:     annotation
+
+user_admin:
+    resource: "@MapsUserBundle/Controller/Admin/"
     type:     annotation
 
 search_admin:
