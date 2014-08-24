@@ -9,8 +9,7 @@ framework:
 
 web_profiler:
     toolbar: %debug_toolbar%
-#    intercept_redirects: %debug_redirects%
-    intercept_redirects: true
+    intercept_redirects: %debug_redirects%
 
 monolog:
     handlers:

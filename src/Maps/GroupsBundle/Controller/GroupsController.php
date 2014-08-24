@@ -86,6 +86,20 @@ class GroupsController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         if ($form->isValid()) {
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Инициативная группа (' . $entity->getName() . ')')
+                ->setFrom('mail@ednml.ru')
+                ->setTo('dev@vld.me')
+                ->setBody(
+                    $this->renderView(
+                        'MapsGroupsBundle:Groups:mail.html.twig',
+                        [
+                            'name' => $entity->getName(),
+                        ]
+                    )
+                );
+            $this->get('mailer')->send($message);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -165,12 +179,6 @@ class GroupsController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $message = \Swift_Message::newInstance()
-                ->setSubject('Инициативная группа')
-                ->setFrom('dsada@vld.me')
-                ->setTo('co1dp1ay@ya.ru')
-                ->setBody("dasd");
-            $this->get('mailer')->send($message);
             $entity = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
