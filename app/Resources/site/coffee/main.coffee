@@ -1,5 +1,4 @@
 searchTypeahead =  (data) ->
-  return false if $('.typeahead').length < 1
   arabicPhrases = new Bloodhound(
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name")
     queryTokenizer: Bloodhound.tokenizers.whitespace
@@ -17,6 +16,7 @@ searchTypeahead =  (data) ->
   $(".typeahead").focus()
 
 search = ->
+  return false if $('.typeahead').length < 1
   promise = $.getJSON("/api/groups/")
   promise.done (data) ->
     searchTypeahead(data)
