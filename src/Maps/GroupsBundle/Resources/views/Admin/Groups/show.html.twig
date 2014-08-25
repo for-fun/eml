@@ -39,7 +39,7 @@
                 <td>{{ entity.authorInfo }}</td>
             {% endif %}
             <td>{{ entity.ip }}</td>
-            <td>{{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}</td>
+            <td>{{ entity.created|localizeddate('none', 'none', 'ru', null, 'd MMM yyyy в kk:mm:ss') }}</td>
         </tr>
         </tbody>
     </table>
@@ -86,7 +86,7 @@
                     <td>{{ comment.authorContact }}</td>
                     <td>{{ comment.authorText }}</td>
                     <td>{{ comment.ip }}</td>
-                    <td>{{ comment.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}</td>
+                    <td>{{ comment.created|localizeddate('none', 'none', 'ru', null, 'd MMM yyyy в kk:mm:ss') }}</td>
                 </tr>
             {% endfor %}
             </tbody>

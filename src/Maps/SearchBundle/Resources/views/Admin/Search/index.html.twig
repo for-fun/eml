@@ -26,7 +26,7 @@
                 <td>{{ entity.id }}</td>
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.ip }}</td>
-                <td>{{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm:ss') }}</td>
+                <td>{{ entity.created|localizeddate('none', 'none', 'ru', null, 'd MMM yyyy в kk:mm:ss') }}</td>
             </tr>
         {% endfor %}
         </tbody>

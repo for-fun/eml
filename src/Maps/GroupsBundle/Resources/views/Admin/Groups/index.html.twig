@@ -43,7 +43,7 @@
                     {% endif %}
                 </td>
                 <td style="width: 150px;">
-                    {{ entity.created|localizeddate('none', 'none', 'ru', null, 'M MMM yyyy в kk:mm') }}
+                    {{ entity.created|localizeddate('none', 'none', 'ru', null, 'd MMM yyyy в kk:mm:ss') }}
                 </td>
                 <td style="width: 153px;">
                     <a class="btn btn-default btn-xs" href="{{ path('groups_edit', { 'id': entity.id }) }}">Изменить</a>
