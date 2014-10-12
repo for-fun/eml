@@ -89,7 +89,7 @@ class GroupsController extends Controller
             $message = \Swift_Message::newInstance()
                 ->setSubject('Инициативная группа - ' . $entity->getName())
                 ->setFrom('mail@ednml.ru')
-                ->setTo('dev@vld.me')
+                ->setTo("ald2006@yandex.ru")
                 ->setBody(
                     $this->renderView(
                         'MapsGroupsBundle:Groups:mail.html.twig',
