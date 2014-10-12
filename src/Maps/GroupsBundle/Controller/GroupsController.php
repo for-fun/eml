@@ -108,7 +108,7 @@ class GroupsController extends Controller
             $em->flush();
 
             $comment = new GroupsComments();
-            $comment->setAuthorName($entity->getName());
+            $comment->setAuthorName($entity->getAuthorName());
             $comment->setAuthorContact($entity->getAuthorContact());
             $comment->setAuthorText($entity->getAuthorInfo());
             $comment->setGroupsId($entity);
