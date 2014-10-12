@@ -25,7 +25,9 @@ class MenuBuilder extends ContainerAware
         $menu->setChildrenAttribute('class', 'nav navbar-nav');
         $menu->addChild('Группы', ['route' => 'site_groups'])->setAttribute('match', 'groups');
         $menu->addChild('Описание', ['route' => 'site_page_show', 'routeParameters' => ['slug' => 'info']]);
-        $menu->addChild("Чат", ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes(['target' => '_blank']);
+        $menu->addChild("Чат", ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes([
+            'onclick' => 'openWindow(this.href);this.blur();return false;',
+        ]);
         $menu->addChild("Форум", ['uri' => 'http://forum.ednml.ru/'])->setLinkAttributes(['target' => '_blank']);
 
         return $menu;
@@ -47,7 +49,9 @@ class MenuBuilder extends ContainerAware
     {
         $menu = $factory->createItem('root');
         $menu->addChild('Форум поиска единомышленников', ['uri' => 'http://forum.ednml.ru/'])->setLinkAttributes(['target' => '_blank']);
-        $menu->addChild('Чат единомышленников', ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes(['target' => '_blank']);
+        $menu->addChild('Чат единомышленников', ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes([
+            'onclick' => 'openWindow(this.href);this.blur();return false;',
+        ]);
 
         return $menu;
     }
@@ -56,7 +60,9 @@ class MenuBuilder extends ContainerAware
     {
         $menu = $factory->createItem('root');
         $menu->addChild("", ['uri' => 'http://forum.ednml.ru/'])->setLinkAttributes(['target' => '_blank']);
-        $menu->addChild(" ", ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes(['target' => '_blank']);
+        $menu->addChild(" ", ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes([
+            'onclick' => 'openWindow(this.href);this.blur();return false;',
+        ]);
 
         return $menu;
     }
