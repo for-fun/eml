@@ -14,7 +14,6 @@
   ],
   "dependencies": {
     "jquery": "*",
-    "bootswatch": "*",
     "bootstrap": "~3.2.0",
     "summernote": "~0.5.3",
     "font-awesome": "~4.1.0",
