@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -86,6 +87,7 @@ class GroupsController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
             $message = \Swift_Message::newInstance()
                 ->setSubject('Инициативная группа - ' . $entity->getName())
                 ->setFrom('mail@ednml.ru')
@@ -102,16 +104,15 @@ class GroupsController extends Controller
                 );
             $this->get('mailer')->send($message);
 
+            $em->persist($entity);
+            $em->flush();
+
             $comment = new GroupsComments();
             $comment->setAuthorName($entity->getName());
             $comment->setAuthorContact($entity->getAuthorContact());
             $comment->setAuthorText($entity->getAuthorInfo());
             $comment->setGroupsId($entity);
-
-            $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
-            $em->flush();
-            $em->persist($entity);
             $em->flush();
             $this->get('session')->getFlashBag()->add('notice', 'Ваша группа добавлена, после одобрения модератором она появится в общем списке.');
 

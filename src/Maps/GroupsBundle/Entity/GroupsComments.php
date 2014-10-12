@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\PrePersist;
+use Maps\GroupsBundle\Entity\Groups\Groups;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -15,8 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  */
-class GroupsComments
-{
+class GroupsComments {
     /**
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -58,14 +58,13 @@ class GroupsComments
     /**
      * @PrePersist
      */
-    public function doStuffOnPrePersist()
-    {
-        if ($this->getCreated() === null) {
-            $this->setCreated(new \DateTime(date('Y-m-d H:i:s')));
+    public function doStuffOnPrePersist() {
+        if ( $this->getCreated() === null ) {
+            $this->setCreated( new \DateTime( date( 'Y-m-d H:i:s' ) ) );
         }
-        if ($this->getIp() === null) {
+        if ( $this->getIp() === null ) {
             $request = Request::createFromGlobals();
-            $this->setIp($request->getClientIp());
+            $this->setIp( $request->getClientIp() );
         }
     }
 
@@ -74,19 +73,18 @@ class GroupsComments
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
     /**
      * Set groupsId
      *
-     * @param integer $groupsId
+     * @param Groups $groupsId
+     *
      * @return GroupsComments
      */
-    public function setGroupsId($groupsId)
-    {
+    public function setGroupsId( Groups $groupsId ) {
         $this->groupsId = $groupsId;
 
         return $this;
@@ -97,32 +95,28 @@ class GroupsComments
      *
      * @return integer
      */
-    public function getGroupsId()
-    {
+    public function getGroupsId() {
         return $this->groupsId;
     }
 
     /**
      * @return \DateTime
      */
-    public function getCreated()
-    {
+    public function getCreated() {
         return $this->created;
     }
 
     /**
      * @param \DateTime $created
      */
-    public function setCreated($created)
-    {
+    public function setCreated( $created ) {
         $this->created = $created;
     }
 
     /**
      * @return bool
      */
-    public function getAllowed()
-    {
+    public function getAllowed() {
         return $this->allowed;
     }
 
@@ -130,8 +124,7 @@ class GroupsComments
     /**
      * @param $allowed
      */
-    public function setAllowed($allowed)
-    {
+    public function setAllowed( $allowed ) {
         $this->allowed = $allowed;
     }
 
@@ -139,64 +132,56 @@ class GroupsComments
     /**
      * @return mixed
      */
-    public function getIp()
-    {
+    public function getIp() {
         return $this->ip;
     }
 
     /**
      * @param mixed $ip
      */
-    public function setIp($ip)
-    {
+    public function setIp( $ip ) {
         $this->ip = $ip;
     }
 
     /**
      * @return mixed
      */
-    public function getAuthorName()
-    {
+    public function getAuthorName() {
         return $this->authorName;
     }
 
     /**
      * @param mixed $authorName
      */
-    public function setAuthorName($authorName)
-    {
+    public function setAuthorName( $authorName ) {
         $this->authorName = $authorName;
     }
 
     /**
      * @return mixed
      */
-    public function getAuthorContact()
-    {
+    public function getAuthorContact() {
         return $this->authorContact;
     }
 
     /**
      * @param mixed $authorContact
      */
-    public function setAuthorContact($authorContact)
-    {
+    public function setAuthorContact( $authorContact ) {
         $this->authorContact = $authorContact;
     }
 
     /**
      * @return mixed
      */
-    public function getAuthorText()
-    {
+    public function getAuthorText() {
         return $this->authorText;
     }
 
     /**
      * @param mixed $authorText
      */
-    public function setAuthorText($authorText)
-    {
+    public function setAuthorText( $authorText ) {
         $this->authorText = $authorText;
     }
 }
