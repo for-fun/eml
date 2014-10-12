@@ -36,6 +36,8 @@ class MenuBuilder extends ContainerAware
         $menu->addChild('Главная', ['route' => 'site_home']);
         $menu->addChild('Список инициативных групп', ['route' => 'site_groups']);
         $menu->addChild('Тех поддержка', ['route' => 'site_page_show', 'routeParameters' => ['slug' => 'info']]);
+        $menu->addChild('Стоимость рекламы', ['route' => 'site_page_show', 'routeParameters' => ['slug' => 'reklama']]);
+        $menu->addChild('Правила', ['route' => 'site_page_show', 'routeParameters' => ['slug' => 'pravila']]);
 
         return $menu;
     }
@@ -43,7 +45,8 @@ class MenuBuilder extends ContainerAware
     public function homeMenuRight(FactoryInterface $factory)
     {
         $menu = $factory->createItem('root');
-        $menu->addChild('Форум', ['uri' => 'http://ednml.7bb.ru/'])->setLinkAttributes(['target' => '_blank']);
+        $menu->addChild('Чат единомышленников', ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes(['target' => '_blank']);
+        $menu->addChild('Форум поиска единомышленников', ['uri' => 'http://forum.ednml.ru/'])->setLinkAttributes(['target' => '_blank']);
 
         return $menu;
     }
