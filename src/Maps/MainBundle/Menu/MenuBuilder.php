@@ -45,8 +45,8 @@ class MenuBuilder extends ContainerAware
     public function homeMenuRight(FactoryInterface $factory)
     {
         $menu = $factory->createItem('root');
-        $menu->addChild('Чат единомышленников', ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes([]);
-        $menu->addChild('Форум поиска единомышленников', ['uri' => 'http://forum.ednml.ru/'])->setLinkAttributes([]);
+        $menu->addChild('Чат единомышленников', ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes(['target' => '_blank']);
+        $menu->addChild('Форум поиска единомышленников', ['uri' => 'http://forum.ednml.ru/'])->setLinkAttributes(['target' => '_blank']);
 
         return $menu;
     }
@@ -54,8 +54,8 @@ class MenuBuilder extends ContainerAware
     public function homeMenuCenter(FactoryInterface $factory)
     {
         $menu = $factory->createItem('root');
-        $menu->addChild("", ['uri' => 'http://forum.ednml.ru/'])->setLinkAttributes([]);
-        $menu->addChild(" ", ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes([]);
+        $menu->addChild("", ['uri' => 'http://forum.ednml.ru/'])->setLinkAttributes(['target' => '_blank']);
+        $menu->addChild(" ", ['uri' => 'http://forum.ednml.ru/chat/'])->setLinkAttributes(['target' => '_blank']);
 
         return $menu;
     }
